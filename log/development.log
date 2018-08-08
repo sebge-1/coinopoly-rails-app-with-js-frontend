@@ -175,3 +175,64 @@ Migrating to CreateCoins (20180807184550)
   [1m[36mPosition Load (0.4ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ? LIMIT ?[0m  [["portfolio_id", 1], ["LIMIT", 11]]
   [1m[36mPosition Load (0.3ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 1]]
   [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+Migrating to AddAdminToUsers (20180808032448)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (6.9ms)[0m  [1m[35mALTER TABLE "users" ADD "admin" boolean[0m
+  ↳ db/migrate/20180808032448_add_admin_to_users.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (7.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180808032448"]]
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (121.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+Migrating to AddPublicToPortfolios (20180808032735)
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "portfolios" ADD "public" boolean DEFAULT 1[0m
+  ↳ db/migrate/20180808032735_add_public_to_portfolios.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180808032735"]]
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (2.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+Migrating to DeleteCurrentValueFromPortfolios (20180808033059)
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20180808033059_delete_current_value_from_portfolios.rb:3
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aportfolios" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "current_value" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "public" boolean DEFAULT '1')[0m
+  ↳ db/migrate/20180808033059_delete_current_value_from_portfolios.rb:3
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "aportfolios" ("id","name","current_value","user_id","created_at","updated_at","public")
+                     SELECT "id","name","current_value","user_id","created_at","updated_at","public" FROM "portfolios"[0m
+  ↳ db/migrate/20180808033059_delete_current_value_from_portfolios.rb:3
+  [1m[35m (2.3ms)[0m  [1m[35mDROP TABLE "portfolios"[0m
+  ↳ db/migrate/20180808033059_delete_current_value_from_portfolios.rb:3
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "portfolios" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "public" boolean DEFAULT '1')[0m
+  ↳ db/migrate/20180808033059_delete_current_value_from_portfolios.rb:3
+  [1m[35m (61.0ms)[0m  [1m[32mINSERT INTO "portfolios" ("id","name","user_id","created_at","updated_at","public")
+                     SELECT "id","name","user_id","created_at","updated_at","public" FROM "aportfolios"[0m
+  ↳ db/migrate/20180808033059_delete_current_value_from_portfolios.rb:3
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "aportfolios"[0m
+  ↳ db/migrate/20180808033059_delete_current_value_from_portfolios.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (22.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180808033059"]]
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (158.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (8.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
