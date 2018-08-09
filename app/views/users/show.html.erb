@@ -1,5 +1,11 @@
 <h2>Welcome back to Coinopoly, <%= @user.name %></h2>
 
+<% if @user.portfolios.nil? %>
+  <%= link_to 'Create your first portfolio', new_user_portfolio</h4>
+<% else %>
+  <%= link_to 'Add another portfolio', new_user_portfolio</h4>
+<% end %>
+
 <% if @user.admin %>
   <% render 'form' %>
 <% end %>
