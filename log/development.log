@@ -810,3 +810,232 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 230ms (Views: 226.4ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-08-09 19:02:50 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 323ms (Views: 295.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-08-09 19:03:13 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZaflbRaDxsqVUWYXPNIGw9yfdkoxJaxB6PewaH2i+ZdN13ZnHo2aA58GahnhztLI053SczLNl5q7vrn4FfnAKQ==", "user"=>{"name"=>"blobso", "email"=>"blobso@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6
+  [1m[36mUser Create (3.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "blobso"], ["email", "blobso@gmail.com"], ["password_digest", "$2a$10$zP2n3Jlq2vnVYqX00kET.OTOZzLvnGTU0oOMD0yIDPqour8hxw9Su"], ["created_at", "2018-08-09 23:03:13.705515"], ["updated_at", "2018-08-09 23:03:13.705515"]]
+  ↳ app/controllers/users_controller.rb:6
+  [1m[35m (3.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:6
+Redirected to http://127.0.0.1:3000/users/5
+Completed 302 Found in 86ms (ActiveRecord: 6.6ms)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:03:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:6: unknown regexp option - h
+/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:6: unmatched close parenthesis: /h4>
+<% else );@output_buffer.safe_append='
+  '.freeze;@output_buffer.append=( link_to 'Add another portfolio', new_user_portfolio</
+/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:6: syntax error, unexpected tINTEGER, expecting ')'
+...tfolio', new_user_portfolio</h4>
+...                              ^
+/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:16: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+          ^~~~~~
+/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:18: syntax error, unexpected end-of-input, expecting keyword_end
+          end
+             ^):
+  
+app/views/users/show.html.erb:6: unknown regexp option - h
+app/views/users/show.html.erb:6: unmatched close parenthesis: /h4>
+app/views/users/show.html.erb:6: syntax error, unexpected tINTEGER, expecting ')'
+app/views/users/show.html.erb:16: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/users/show.html.erb:18: syntax error, unexpected end-of-input, expecting keyword_end
+app/controllers/users_controller.rb:18:in `show'
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:04:38 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.1ms)
+
+
+  
+SyntaxError (/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:13: unknown regexp option - p
+/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:13: unmatched close parenthesis: /h4>
+<% else );@output_buffer.safe_append='
+  '.freeze;@output_buffer.append=( link_to 'Add another portfolio', new_user_portfolio );@output_buffer.safe_append='
+'.freeze; end 
+@output_buffer.safe_append='
+'.freeze; if @user.admin 
+   render 'form' 
+ end 
+@output_buffer.safe_append='
+<p>'.freeze;@output_buffer.append=( link_to "Log Out", logout_path );@output_buffer.safe_append='</
+/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:18: unterminated string meets end of file
+          end
+             ^
+/Users/sebastiangertz/Desktop/coinopoly-rails-app/app/views/users/show.html.erb:18: syntax error, unexpected end-of-input, expecting ')'
+          end
+             ^):
+  
+app/views/users/show.html.erb:13: unknown regexp option - p
+app/views/users/show.html.erb:13: unmatched close parenthesis: /h4>
+app/views/users/show.html.erb:18: unterminated string meets end of file
+app/views/users/show.html.erb:18: syntax error, unexpected end-of-input, expecting ')'
+app/controllers/users_controller.rb:18:in `show'
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:06:08 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (385.1ms)
+Completed 500 Internal Server Error in 395ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_portfolio' for #<#<Class:0x00007fee3eb0a4f8>:0x00007fee431c06e0>
+Did you mean?  new_user_portfolio_url
+               new_user_portfolio_path):
+    3: <% if @user.portfolios.nil? %>
+    4:   <%= link_to 'Create your first portfolio', new_user_portfolio %>
+    5: <% else %>
+    6:   <%= link_to 'Add another portfolio', new_user_portfolio %>
+    7: <% end %>
+    8: 
+    9: <% if @user.admin %>
+  
+app/views/users/show.html.erb:6:in `_app_views_users_show_html_erb__1344288943719402706_70330652412660'
+app/controllers/users_controller.rb:18:in `show'
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:06:30 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (291.7ms)
+Completed 500 Internal Server Error in 300ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_portfolio' for #<#<Class:0x00007fee3eb0a4f8>:0x00007fee42465c70>
+Did you mean?  new_user_portfolio_url
+               new_user_portfolio_path):
+    3: <% if @user.portfolios.nil? %>
+    4:   <%= link_to 'Create your first portfolio', new_user_portfolio_path %>
+    5: <% else %>
+    6:   <%= link_to 'Add another portfolio', new_user_portfolio %>
+    7: <% end %>
+    8: 
+    9: <% if @user.admin %>
+  
+app/views/users/show.html.erb:6:in `_app_views_users_show_html_erb__1344288943719402706_70330645423260'
+app/controllers/users_controller.rb:18:in `show'
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:06:40 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (323.9ms)
+Completed 500 Internal Server Error in 334ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_portfolio' for #<#<Class:0x00007fee3eb0a4f8>:0x00007fee440ae030>
+Did you mean?  new_user_portfolio_url
+               new_user_portfolio_path):
+    3: <% if @user.portfolios.nil? %>
+    4:   <%= link_to 'Create your first portfolio', new_user_portfolio_path %>
+    5: <% else %>
+    6:   <%= link_to 'Add another portfolio', new_user_portfolio %>
+    7: <% end %>
+    8: 
+    9: <% if @user.admin %>
+  
+app/views/users/show.html.erb:6:in `_app_views_users_show_html_erb__1344288943719402706_70330660250400'
+app/controllers/users_controller.rb:18:in `show'
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:06:52 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (320.4ms)
+Completed 500 Internal Server Error in 360ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `new_user_portfolio' for #<#<Class:0x00007ff084d78e68>:0x00007ff084d58140>
+Did you mean?  new_user_portfolio_url
+               new_user_portfolio_path):
+    3: <% if @user.portfolios.nil? %>
+    4:   <%= link_to 'Create your first portfolio', new_user_portfolio_path %>
+    5: <% else %>
+    6:   <%= link_to 'Add another portfolio', new_user_portfolio %>
+    7: <% end %>
+    8: 
+    9: <% if @user.admin %>
+  
+app/views/users/show.html.erb:6:in `_app_views_users_show_html_erb__1353361088757679065_70335498600080'
+app/controllers/users_controller.rb:18:in `show'
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:07:06 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (4.6ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"portfolios", :id=>"5"}, missing required keys: [:user_id]):
+    3: <% if @user.portfolios.nil? %>
+    4:   <%= link_to 'Create your first portfolio', new_user_portfolio_path %>
+    5: <% else %>
+    6:   <%= link_to 'Add another portfolio', new_user_portfolio_path %>
+    7: <% end %>
+    8: 
+    9: <% if @user.admin %>
+  
+app/views/users/show.html.erb:6:in `_app_views_users_show_html_erb__1353361088757679065_70335488354520'
+app/controllers/users_controller.rb:18:in `show'
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:09:08 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 323ms (Views: 321.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/5" for 127.0.0.1 at 2018-08-09 19:09:48 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 5]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (23.2ms)
+Completed 200 OK in 49ms (Views: 47.0ms | ActiveRecord: 0.7ms)
+
+
