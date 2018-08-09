@@ -13,5 +13,12 @@ class PortfoliosController < ApplicationController
       redirect_to new_user_portfolio_path(current_user)
     end
   end
-  
+
+  def show
+  end
+
+  private
+  def portfolio_params
+    params.require(:portfolio).permit(:name, :public)
+  end
 end
