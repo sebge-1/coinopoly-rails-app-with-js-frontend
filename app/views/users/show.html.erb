@@ -1,1 +1,7 @@
 <h2>Welcome back to Coinopoly, <%= @user.name %></h2>
+
+<% if @user.admin %>
+  <% render 'form' %>
+<% end %>
+
+<p><%= link_to "Log Out", logout_path %></p>

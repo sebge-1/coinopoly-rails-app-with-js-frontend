@@ -733,3 +733,80 @@ Processing by ApplicationController#welcome as HTML
 Completed 200 OK in 1515ms (Views: 1500.1ms | ActiveRecord: 0.9ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-08-08 14:03:14 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (68.8ms)
+Completed 200 OK in 722ms (Views: 673.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-08-08 14:03:41 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UV0UY/tQZvnnev1TD5UboNb9eiRWFpQW1CIfcdxOeCf0+hD6c9Q0zVfejLK6mHkVgcx9v7Zxuv/aCrKGJlNnhw==", "user"=>{"name"=>"Rasputin12", "email"=>"rasputin@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:5
+  [1m[36mUser Create (12.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rasputin12"], ["email", "rasputin@gmail.com"], ["password_digest", "$2a$10$UMaSkkFzMt4qv4FkOFc3nOJWi85nnUhGrtZXEYBrL80dYeWcpKc.K"], ["created_at", "2018-08-08 18:03:41.824437"], ["updated_at", "2018-08-08 18:03:41.824437"]]
+  ↳ app/controllers/users_controller.rb:5
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:5
+Redirected to http://127.0.0.1:3000/users/3
+Completed 302 Found in 223ms (ActiveRecord: 18.6ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2018-08-08 14:03:41 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15
+Completed 500 Internal Server Error in 471ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `logged_in?' for #<UsersController:0x00007f8ba8d695a8>
+Did you mean?  logger):
+  
+app/controllers/users_controller.rb:16:in `show'
+Started POST "/users" for 127.0.0.1 at 2018-08-08 14:05:14 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UV0UY/tQZvnnev1TD5UboNb9eiRWFpQW1CIfcdxOeCf0+hD6c9Q0zVfejLK6mHkVgcx9v7Zxuv/aCrKGJlNnhw==", "user"=>{"name"=>"rasputin", "email"=>"rasputin@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "rasputin"], ["email", "rasputin@gmail.com"], ["password_digest", "$2a$10$eMd22Y1vOaV/NLUIFz2rJOdpBiORcIwZ86PGBDPvzU87/IHvyrt1q"], ["created_at", "2018-08-08 18:05:14.690031"], ["updated_at", "2018-08-08 18:05:14.690031"]]
+  ↳ app/controllers/users_controller.rb:6
+  [1m[35m (4.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:6
+Redirected to http://127.0.0.1:3000/users/4
+Completed 302 Found in 126ms (ActiveRecord: 5.6ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2018-08-08 14:05:14 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 105ms (Views: 100.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-08-08 14:05:32 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UV0UY/tQZvnnev1TD5UboNb9eiRWFpQW1CIfcdxOeCf0+hD6c9Q0zVfejLK6mHkVgcx9v7Zxuv/aCrKGJlNnhw==", "user"=>{"name"=>"rasputin", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "rasputin"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4
+Redirected to http://127.0.0.1:3000/users/4
+Completed 302 Found in 143ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/users/4" for 127.0.0.1 at 2018-08-08 14:05:32 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 230ms (Views: 226.4ms | ActiveRecord: 0.4ms)
+
+

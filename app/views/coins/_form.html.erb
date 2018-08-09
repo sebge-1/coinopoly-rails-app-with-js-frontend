@@ -1,0 +1,8 @@
+<%= form_tag coins_path do %>
+  <label>Name:</label><br>
+  <%= text_field_tag :name %><br>
+
+  <label>Ticker</label><br>
+  <%= text_area_tag :ticker %><br>
+  <%= submit_tag "Add new coin" %>
+<% end %>
