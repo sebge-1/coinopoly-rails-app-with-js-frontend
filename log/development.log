@@ -5694,3 +5694,801 @@ Processing by PortfoliosController#show as HTML
 Completed 200 OK in 80ms (Views: 67.1ms | ActiveRecord: 1.1ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-08-10 01:45:27 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 309ms (Views: 283.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-08-10 01:45:40 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3CBrmbLJTdwh+RGbzcwtAUSKaNZfaAnmWGU9BwaaDFmQHkSMu+W3TLjKUjeA5Va0sw0xRFJA01shPBODSAouEw==", "user"=>{"name"=>"bob", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "bob"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4
+Redirected to http://127.0.0.1:3000/users/7
+Completed 302 Found in 81ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2018-08-10 01:45:41 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.6ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (34.4ms)
+Completed 200 OK in 62ms (Views: 58.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2018-08-10 01:47:01 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 35ms (Views: 33.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/7/portfolios/new" for 127.0.0.1 at 2018-08-10 01:47:11 -0400
+Processing by PortfoliosController#new as HTML
+  Parameters: {"user_id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  Rendering portfolios/new.html.erb within layouts/application
+  Rendered portfolios/new.html.erb within layouts/application (8.1ms)
+Completed 200 OK in 64ms (Views: 58.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/7/portfolios" for 127.0.0.1 at 2018-08-10 01:47:14 -0400
+Processing by PortfoliosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"1g48B5zqXc3/CbFluPLCJRzKsJdB2YPqE5wfMHJ3VlKqyfgTP5NNog+Epa9fldErQ1+aXgDfNoPo0miqU/WliA==", "portfolio"=>{"name"=>"Ultra high risk", "public"=>"false"}, "commit"=>"Create Portfolio", "user_id"=>"7"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (7) LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/portfolios_controller.rb:12
+  [1m[36mPortfolio Create (0.6ms)[0m  [1m[32mINSERT INTO "portfolios" ("name", "user_id", "created_at", "updated_at", "public") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ultra high risk"], ["user_id", 1], ["created_at", "2018-08-10 05:47:14.468087"], ["updated_at", "2018-08-10 05:47:14.468087"], ["public", 0]]
+  ↳ app/controllers/portfolios_controller.rb:12
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/portfolios_controller.rb:12
+Redirected to http://127.0.0.1:3000/users/1/portfolios/38
+Completed 302 Found in 12ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1/portfolios/38" for 127.0.0.1 at 2018-08-10 01:47:14 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"38"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.7ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 38]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (22.5ms)
+Completed 200 OK in 95ms (Views: 67.1ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/portfolios/38/positions" for 127.0.0.1 at 2018-08-10 01:47:19 -0400
+Processing by PositionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bAPi3E/TDSoOq8yAmSRg+Bk5TeVbb0+QFac4FHgeKHogPc3JRv/3upeYjyzUDRtN7r4Ud1ZHlS1s/haQNo4KMA==", "position"=>{"coin_id"=>"1", "quantity"=>"5", "user_id"=>"1"}, "commit"=>"Add a balance to your portfolio", "portfolio_id"=>"38"}
+  [1m[36mPortfolio Load (0.6ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mPosition Create (0.5ms)[0m  [1m[32mINSERT INTO "positions" ("user_id", "portfolio_id", "coin_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["portfolio_id", 38], ["coin_id", 1], ["quantity", 5], ["created_at", "2018-08-10 05:47:19.312070"], ["updated_at", "2018-08-10 05:47:19.312070"]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[35m (1.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+Redirected to http://127.0.0.1:3000/users/7/portfolios/38
+Completed 302 Found in 17ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/users/7/portfolios/38" for 127.0.0.1 at 2018-08-10 01:47:19 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"38"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 7], ["id", 38], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  Rendered portfolios/show.html.erb within layouts/application (15.2ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <%= @portfolio.name %><br>
+    2: 
+    3: <% @portfolio.positions.each do |position| %>
+    4:   <%= position.coin.name %><br>
+  
+app/views/portfolios/show.html.erb:1:in `_app_views_portfolios_show_html_erb__1680097747311181356_70342332944680'
+Started GET "/logout" for 127.0.0.1 at 2018-08-10 01:47:31 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-10 01:47:31 -0400
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 40ms (Views: 39.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-08-10 01:47:41 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RyK1WsFgEFLwmi5lkkCjO+k7nUWdXxF9v7H+ZVbeC7CYVnkAzKH6uuamt1haGNIgXHZzKiqUmYcJ0feso/Nagg==", "user"=>{"name"=>"Seb", "email"=>"seb@email.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Seb"], ["email", "seb@email.com"], ["password_digest", "$2a$10$vw7mJ.XI/Y8SfrC8wtv7nOgqQHmqByHwHXeRyej5gSN4XH0wCfYoW"], ["created_at", "2018-08-10 05:47:41.924369"], ["updated_at", "2018-08-10 05:47:41.924369"]]
+  ↳ app/controllers/users_controller.rb:6
+  [1m[35m (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:6
+Redirected to http://127.0.0.1:3000/users/10
+Completed 302 Found in 80ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/users/10" for 127.0.0.1 at 2018-08-10 01:47:41 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 10]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 52ms (Views: 49.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/10/portfolios/new" for 127.0.0.1 at 2018-08-10 01:47:45 -0400
+Processing by PortfoliosController#new as HTML
+  Parameters: {"user_id"=>"10"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  Rendering portfolios/new.html.erb within layouts/application
+  Rendered portfolios/new.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 51ms (Views: 47.6ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users/10/portfolios" for 127.0.0.1 at 2018-08-10 01:47:49 -0400
+Processing by PortfoliosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TIo5ssubegVatPCCyORY2ih/HqVScIRXAqLg9BgHQW/AYCrMunu9oAgegPaOAXhJr+Tpc/Z+Fi8phGyaO96ICw==", "portfolio"=>{"name"=>"Ultra high risk", "public"=>"false"}, "commit"=>"Create Portfolio", "user_id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (10) LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/portfolios_controller.rb:12
+  [1m[36mPortfolio Create (0.5ms)[0m  [1m[32mINSERT INTO "portfolios" ("name", "user_id", "created_at", "updated_at", "public") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ultra high risk"], ["user_id", 1], ["created_at", "2018-08-10 05:47:49.436309"], ["updated_at", "2018-08-10 05:47:49.436309"], ["public", 0]]
+  ↳ app/controllers/portfolios_controller.rb:12
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/portfolios_controller.rb:12
+Redirected to http://127.0.0.1:3000/users/1/portfolios/39
+Completed 302 Found in 9ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/users/1/portfolios/39" for 127.0.0.1 at 2018-08-10 01:47:49 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"1", "id"=>"39"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 1], ["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.7ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 39]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 58ms (Views: 52.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/portfolios/39/positions" for 127.0.0.1 at 2018-08-10 01:47:54 -0400
+Processing by PositionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xuqdRlqfJpk2nzdCWatPGeYDtGBqhk5y10EClkaQCNLGcKr0dM0Jm7gQ/3tzA1f5piz4b+swq4ktvCrPgTp2dA==", "position"=>{"coin_id"=>"1", "quantity"=>"5", "user_id"=>"1"}, "commit"=>"Add a balance to your portfolio", "portfolio_id"=>"39"}
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mPosition Create (0.4ms)[0m  [1m[32mINSERT INTO "positions" ("user_id", "portfolio_id", "coin_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["portfolio_id", 39], ["coin_id", 1], ["quantity", 5], ["created_at", "2018-08-10 05:47:54.437927"], ["updated_at", "2018-08-10 05:47:54.437927"]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+Redirected to http://127.0.0.1:3000/users/10/portfolios/39
+Completed 302 Found in 13ms (ActiveRecord: 4.2ms)
+
+
+Started GET "/users/10/portfolios/39" for 127.0.0.1 at 2018-08-10 01:47:54 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"10", "id"=>"39"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 10], ["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  Rendered portfolios/show.html.erb within layouts/application (12.7ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <%= @portfolio.name %><br>
+    2: 
+    3: <% @portfolio.positions.each do |position| %>
+    4:   <%= position.coin.name %><br>
+  
+app/views/portfolios/show.html.erb:1:in `_app_views_portfolios_show_html_erb__1680097747311181356_70342303159460'
+Started POST "/portfolios/39/positions" for 127.0.0.1 at 2018-08-10 01:49:54 -0400
+Processing by PositionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xuqdRlqfJpk2nzdCWatPGeYDtGBqhk5y10EClkaQCNLGcKr0dM0Jm7gQ/3tzA1f5piz4b+swq4ktvCrPgTp2dA==", "position"=>{"coin_id"=>"1", "quantity"=>"5", "user_id"=>"1"}, "commit"=>"Add a balance to your portfolio", "portfolio_id"=>"39"}
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mPosition Create (1.3ms)[0m  [1m[32mINSERT INTO "positions" ("user_id", "portfolio_id", "coin_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["portfolio_id", 39], ["coin_id", 1], ["quantity", 5], ["created_at", "2018-08-10 05:49:54.964957"], ["updated_at", "2018-08-10 05:49:54.964957"]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+Redirected to http://127.0.0.1:3000/users/10/portfolios/39
+Completed 302 Found in 15ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/users/10/portfolios/39" for 127.0.0.1 at 2018-08-10 01:49:54 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"10", "id"=>"39"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 10], ["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  Rendered portfolios/show.html.erb within layouts/application (5.7ms)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <%= @portfolio.name %><br>
+    2: 
+    3: <% @portfolio.positions.each do |position| %>
+    4:   <%= position.coin.name %><br>
+  
+app/views/portfolios/show.html.erb:1:in `_app_views_portfolios_show_html_erb__1680097747311181356_70342333817560'
+Started GET "/users/10/portfolios/39" for 127.0.0.1 at 2018-08-10 01:52:31 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"10", "id"=>"39"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 10], ["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  Rendered portfolios/show.html.erb within layouts/application (10.0ms)
+Completed 500 Internal Server Error in 119ms (ActiveRecord: 4.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <%= @portfolio.name %><br>
+    2: 
+    3: <% @portfolio.positions.each do |position| %>
+    4:   <%= position.coin.name %><br>
+  
+app/views/portfolios/show.html.erb:1:in `_app_views_portfolios_show_html_erb__1680097747311181356_70342309273720'
+Started POST "/portfolios/39/positions" for 127.0.0.1 at 2018-08-10 01:52:35 -0400
+Processing by PositionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xuqdRlqfJpk2nzdCWatPGeYDtGBqhk5y10EClkaQCNLGcKr0dM0Jm7gQ/3tzA1f5piz4b+swq4ktvCrPgTp2dA==", "position"=>{"coin_id"=>"1", "quantity"=>"5", "user_id"=>"1"}, "commit"=>"Add a balance to your portfolio", "portfolio_id"=>"39"}
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mPosition Create (0.8ms)[0m  [1m[32mINSERT INTO "positions" ("user_id", "portfolio_id", "coin_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 1], ["portfolio_id", 39], ["coin_id", 1], ["quantity", 5], ["created_at", "2018-08-10 05:52:35.605897"], ["updated_at", "2018-08-10 05:52:35.605897"]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[35m (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+Redirected to http://127.0.0.1:3000/users/10/portfolios/39
+Completed 302 Found in 40ms (ActiveRecord: 7.2ms)
+
+
+Started GET "/users/10/portfolios/39" for 127.0.0.1 at 2018-08-10 01:52:35 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"10", "id"=>"39"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 10], ["id", 39], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  Rendered portfolios/show.html.erb within layouts/application (9.5ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    1: <%= @portfolio.name %><br>
+    2: 
+    3: <% @portfolio.positions.each do |position| %>
+    4:   <%= position.coin.name %><br>
+  
+app/views/portfolios/show.html.erb:1:in `_app_views_portfolios_show_html_erb__1680097747311181356_70342343541420'
+Started GET "/logout" for 127.0.0.1 at 2018-08-10 01:52:39 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-10 01:52:39 -0400
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 73ms (Views: 71.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-08-10 01:52:41 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NJKAVS+UB8fvg8RPD/z/qHGPQbt7Gxiw8KXbk5sKbhLgwu20iRio/d6rtgbNTKyCkyMY3rRAHosmWGSLRyCyCA==", "user"=>{"name"=>"bob", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "bob"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4
+Redirected to http://127.0.0.1:3000/users/7
+Completed 302 Found in 76ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2018-08-10 01:52:42 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/7/portfolios/5" for 127.0.0.1 at 2018-08-10 01:52:43 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 7], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.8ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 5]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.4ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (10.2ms)
+Completed 200 OK in 50ms (Views: 42.2ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/portfolios/5/positions" for 127.0.0.1 at 2018-08-10 01:52:45 -0400
+Processing by PositionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"W2lZ7uz6lmbduybbdTIEMlMdLObyt3T7BDBLGKt5Nc6s1VuwkyG0dJZKQNuiJ5o5ruribjfc6M89xj8dNORFBw==", "position"=>{"coin_id"=>"1", "quantity"=>"76", "user_id"=>"7"}, "commit"=>"Add a balance to your portfolio", "portfolio_id"=>"5"}
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mPosition Create (0.4ms)[0m  [1m[32mINSERT INTO "positions" ("user_id", "portfolio_id", "coin_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 7], ["portfolio_id", 5], ["coin_id", 1], ["quantity", 76], ["created_at", "2018-08-10 05:52:45.899574"], ["updated_at", "2018-08-10 05:52:45.899574"]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+Redirected to http://127.0.0.1:3000/users/7/portfolios/5
+Completed 302 Found in 14ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/users/7/portfolios/5" for 127.0.0.1 at 2018-08-10 01:52:45 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 7], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.4ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 5]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/portfolios/show.html.erb:4
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 100ms (Views: 85.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2018-08-10 01:52:54 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-10 01:52:54 -0400
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 38ms (Views: 37.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-08-10 01:53:00 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nK7P0a62xWeolph+xc5jUAPqVXl+I5iNalHmuUZtTbaQvCoGWgvI13V5rUEDmTrQKGhx/fslPFl0cGU9DuMALA==", "user"=>{"name"=>"seb", "email"=>"bob@email.com", "password"=>"[FILTERED]"}, "commit"=>"Signup"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:6
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "seb"], ["email", "bob@email.com"], ["password_digest", "$2a$10$Ak1PClyNWzv.rxdSPiR4ZuIrGmAFpxrxYIY.xiV7MrtF0x7s/DQqy"], ["created_at", "2018-08-10 05:53:00.726021"], ["updated_at", "2018-08-10 05:53:00.726021"]]
+  ↳ app/controllers/users_controller.rb:6
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:6
+Redirected to http://127.0.0.1:3000/users/11
+Completed 302 Found in 82ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/users/11" for 127.0.0.1 at 2018-08-10 01:53:00 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 11]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 58ms (Views: 56.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/11/portfolios/new" for 127.0.0.1 at 2018-08-10 01:53:02 -0400
+Processing by PortfoliosController#new as HTML
+  Parameters: {"user_id"=>"11"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  Rendering portfolios/new.html.erb within layouts/application
+  Rendered portfolios/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 49ms (Views: 45.5ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users/11/portfolios" for 127.0.0.1 at 2018-08-10 01:53:04 -0400
+Processing by PortfoliosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yfkgaSJMNi2lO9qqSJDDE9OgWc5xHwVYkN6Qo+J1RiCFXuiAFhf44wbKx8mbc7DzlYY3dd18Go+gdVH30hLv4w==", "portfolio"=>{"name"=>"Ultra high risk", "public"=>"false"}, "commit"=>"Create Portfolio", "user_id"=>"11"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/portfolios_controller.rb:12
+  [1m[36mPortfolio Create (0.4ms)[0m  [1m[32mINSERT INTO "portfolios" ("name", "user_id", "created_at", "updated_at", "public") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ultra high risk"], ["user_id", 11], ["created_at", "2018-08-10 05:53:04.612915"], ["updated_at", "2018-08-10 05:53:04.612915"], ["public", 0]]
+  ↳ app/controllers/portfolios_controller.rb:12
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/portfolios_controller.rb:12
+Redirected to http://127.0.0.1:3000/users/11/portfolios/40
+Completed 302 Found in 8ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/users/11/portfolios/40" for 127.0.0.1 at 2018-08-10 01:53:04 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"11", "id"=>"40"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 11], ["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.1ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 40]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 45ms (Views: 37.0ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/portfolios/40/positions" for 127.0.0.1 at 2018-08-10 01:53:06 -0400
+Processing by PositionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"i0hKgDzBCsCs9zh92m9UVkuWtu6E87CwRVOrCm4lxOVxqWCLAUJrpcsvFhkvC9FrzT+7N6rcqPAy++XYBYd85g==", "position"=>{"coin_id"=>"1", "quantity"=>"454", "user_id"=>"11"}, "commit"=>"Add a balance to your portfolio", "portfolio_id"=>"40"}
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mPosition Create (0.7ms)[0m  [1m[32mINSERT INTO "positions" ("user_id", "portfolio_id", "coin_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 11], ["portfolio_id", 40], ["coin_id", 1], ["quantity", 454], ["created_at", "2018-08-10 05:53:06.564406"], ["updated_at", "2018-08-10 05:53:06.564406"]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[35m (2.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+Redirected to http://127.0.0.1:3000/users/11/portfolios/40
+Completed 302 Found in 15ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/users/11/portfolios/40" for 127.0.0.1 at 2018-08-10 01:53:06 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"11", "id"=>"40"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 11], ["id", 40], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 40]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/portfolios/show.html.erb:4
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 72ms (Views: 63.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2018-08-10 01:53:25 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-10 01:53:25 -0400
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 44ms (Views: 42.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/signin" for 127.0.0.1 at 2018-08-10 01:53:27 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"iCikYRz8ococUhgf+x9d/CNIp+rY51PumMuCO4J9uMBxEFLcue/Em2EaUhhMML+aW8yKZtDmPD4tFMZ8DBl48w==", "user"=>{"name"=>"bob", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = ? LIMIT ?[0m  [["name", "bob"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4
+Redirected to http://127.0.0.1:3000/users/7
+Completed 302 Found in 79ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2018-08-10 01:53:27 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 36ms (Views: 34.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/7" for 127.0.0.1 at 2018-08-10 01:56:48 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (155.6ms)
+Completed 500 Internal Server Error in 164ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `user_portfolio' for #<#<Class:0x00007ff3b3fcc598>:0x00007ff3b0495bf0>
+Did you mean?  user_portfolio_url):
+    4:   <%= link_to 'Create your first portfolio', new_user_portfolio_path(current_user) %>
+    5: <% else %>
+    6:   <%= @user.portfolios.each do |portfolio| %>
+    7:     <%= link_to "#{portfolio.name}", user_portfolio(@user, portfolio) %><br>
+    8:   <% end %>
+    9:   <%= link_to 'Add another portfolio', new_user_portfolio_path(current_user) %>
+   10: <% end %>
+  
+app/views/users/show.html.erb:7:in `block in _app_views_users_show_html_erb__4525370829430069755_70342305686620'
+app/views/users/show.html.erb:6:in `_app_views_users_show_html_erb__4525370829430069755_70342305686620'
+app/controllers/users_controller.rb:18:in `show'
+Started GET "/users/7" for 127.0.0.1 at 2018-08-10 01:56:59 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 38ms (Views: 36.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/7/portfolios/new" for 127.0.0.1 at 2018-08-10 01:57:08 -0400
+Processing by PortfoliosController#new as HTML
+  Parameters: {"user_id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  Rendering portfolios/new.html.erb within layouts/application
+  Rendered portfolios/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 45ms (Views: 37.7ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/users/7/portfolios" for 127.0.0.1 at 2018-08-10 01:57:10 -0400
+Processing by PortfoliosController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"oYgjZy4egJ2mpkLCnPy/xs44rPKXf39VWBVSGEeWawC7RJEN2LgoT/iDfExhMa7JCGRXsQVZ1IAN25pvzeBCRQ==", "portfolio"=>{"name"=>"Ultra high risk", "public"=>"false"}, "commit"=>"Create Portfolio", "user_id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:10
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/portfolios_controller.rb:12
+  [1m[36mPortfolio Create (0.5ms)[0m  [1m[32mINSERT INTO "portfolios" ("name", "user_id", "created_at", "updated_at", "public") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Ultra high risk"], ["user_id", 7], ["created_at", "2018-08-10 05:57:10.839523"], ["updated_at", "2018-08-10 05:57:10.839523"], ["public", 0]]
+  ↳ app/controllers/portfolios_controller.rb:12
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/portfolios_controller.rb:12
+Redirected to http://127.0.0.1:3000/users/7/portfolios/41
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/7/portfolios/41" for 127.0.0.1 at 2018-08-10 01:57:10 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"41"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 7], ["id", 41], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 41]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.4ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 67ms (Views: 59.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/7/" for 127.0.0.1 at 2018-08-10 01:57:18 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 33ms (Views: 31.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/7/" for 127.0.0.1 at 2018-08-10 01:57:51 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 31ms (Views: 29.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/7/" for 127.0.0.1 at 2018-08-10 01:58:32 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 7]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 40ms (Views: 38.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/7/portfolios/4" for 127.0.0.1 at 2018-08-10 01:58:46 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 7], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 4]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (7.8ms)
+Completed 200 OK in 56ms (Views: 49.5ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/portfolios/4/positions" for 127.0.0.1 at 2018-08-10 01:58:50 -0400
+Processing by PositionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PgjTvxNeqZ0zvfsDRpxHFYMRp/cUQhqrOCJ2P70t/M7luezO/k6q434cDg11yZjNYhXf7nMxQenjCQGKeTkQiQ==", "position"=>{"coin_id"=>"1", "quantity"=>"5", "user_id"=>"7"}, "commit"=>"Add a balance to your portfolio", "portfolio_id"=>"4"}
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mPosition Create (0.6ms)[0m  [1m[32mINSERT INTO "positions" ("user_id", "portfolio_id", "coin_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 7], ["portfolio_id", 4], ["coin_id", 1], ["quantity", 5], ["created_at", "2018-08-10 05:58:50.935584"], ["updated_at", "2018-08-10 05:58:50.935584"]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+Redirected to http://127.0.0.1:3000/users/7/portfolios/4
+Completed 302 Found in 14ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/users/7/portfolios/4" for 127.0.0.1 at 2018-08-10 01:58:50 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 7], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 4]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/portfolios/show.html.erb:4
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 81ms (Views: 71.4ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/portfolios/4/positions" for 127.0.0.1 at 2018-08-10 01:58:57 -0400
+Processing by PositionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7HO4XPUF0CGnxYpMFeI7+pnewa9aJbnZSyJ8SuwtQZdKzreOaH7ENZVvoCz8GApvd+5eCCo5jsHNnq63wNVacw==", "position"=>{"coin_id"=>"1", "quantity"=>"4", "user_id"=>"7"}, "commit"=>"Add a balance to your portfolio", "portfolio_id"=>"4"}
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mPosition Create (0.5ms)[0m  [1m[32mINSERT INTO "positions" ("user_id", "portfolio_id", "coin_id", "quantity", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["user_id", 7], ["portfolio_id", 4], ["coin_id", 1], ["quantity", 4], ["created_at", "2018-08-10 05:58:57.653166"], ["updated_at", "2018-08-10 05:58:57.653166"]]
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[35m (2.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/positions_controller.rb:6
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+Redirected to http://127.0.0.1:3000/users/7/portfolios/4
+Completed 302 Found in 12ms (ActiveRecord: 3.9ms)
+
+
+Started GET "/users/7/portfolios/4" for 127.0.0.1 at 2018-08-10 01:58:57 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"7", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:20
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 7], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 4]]
+  ↳ app/views/portfolios/show.html.erb:3
+  [1m[36mCoin Load (1.0ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/portfolios/show.html.erb:4
+  [1m[36mCACHE Coin Load (0.0ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/portfolios/show.html.erb:4
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:10
+  Rendered portfolios/show.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 76ms (Views: 66.3ms | ActiveRecord: 2.1ms)
+
+

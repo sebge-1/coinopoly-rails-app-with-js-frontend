@@ -1,8 +1,8 @@
-<%= @portfolio.name %>
+<%= @portfolio.name %><br>
 
 <% @portfolio.positions.each do |position| %>
   <%= position.coin.name %><br>
-  <%= position.quantity %>
+  <%= position.quantity %><br>
 <% end %>
 
 <%= form_for [@portfolio, @position] do |f| %>

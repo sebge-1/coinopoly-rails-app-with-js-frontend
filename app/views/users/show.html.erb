@@ -3,8 +3,9 @@
 <% if @user.portfolios.blank? %>
   <%= link_to 'Create your first portfolio', new_user_portfolio_path(current_user) %>
 <% else %>
-  <%= @user.portfolios.each do |portfolio| %>
-    <%= link_to "#{portfolio.name}", user_portfolio_path(@user, portfolio) %>
+  <h4>Keep up with your portfolios:</h4>
+  <% @user.portfolios.each do |portfolio| %>
+    <%= link_to "#{portfolio.name}", user_portfolio_path(@user, portfolio) %><br>
   <% end %>
   <%= link_to 'Add another portfolio', new_user_portfolio_path(current_user) %>
 <% end %>

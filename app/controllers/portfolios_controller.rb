@@ -7,7 +7,7 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @user = User.find_by(params[:user_id])
+    @user = User.find_by(id: params[:user_id])
     @portfolio = @user.portfolios.build(portfolio_params)
     if @portfolio.save
       redirect_to user_portfolio_path(@user, @portfolio)
