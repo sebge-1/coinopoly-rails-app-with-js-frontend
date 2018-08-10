@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     resources :portfolios
   end
 
+  resources :portfolios do
+    resources :positions
+  end
+
   resource :coins
 
   root to: 'application#welcome'

@@ -1,12 +1,14 @@
 <%= @portfolio.name %>
 
-<% @portfolio.positions.each do |position| %>
+<!-- <% @portfolio.positions.each do |position| %>
   <%= position.coin.name %>
   <%= position.quantity %>
-<% end %>
+<% end %> -->
 
-<%= form_for(@position) do |f| %>
-  <%= f.select 'name', options_from_collection_for_select(@coins, 'name', 'name') %>
-  <%= f.number_field 'quantity' %>
+<%= form_for [@portfolio, @position] do |f| %>
+  <label>Coin:</label>
+  <%= f.collection_select(:coin_id, @coins, :id, :name) %>
+  <label>Quantity:</label>
+  <%= f.number_field :quantity %>
   <%= f.submit 'Add a balance to your portfolio' %>
-<%= end %>
+<% end %>
