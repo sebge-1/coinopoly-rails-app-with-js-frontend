@@ -6,6 +6,9 @@ class Portfolio < ApplicationRecord
 
   def value
     @sum = 0
-    self.positions.each{|pos| @sum += pos.coin.value}
+    self.positions.each do |pos|
+      @sum += pos.value
+    end
+    @sum
   end
 end
