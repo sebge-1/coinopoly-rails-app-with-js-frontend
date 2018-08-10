@@ -7,16 +7,18 @@ class PortfoliosController < ApplicationController
   end
 
   def create
-    @portfolio = current_user.portfolios.build(portfolio_params)
+    @user = User.find_by(params[:user_id])
+    @portfolio = @user.portfolios.build(portfolio_params)
     if @portfolio.save
-      redirect_to user_portfolio_path(current_user, @portfolio)
+      redirect_to user_portfolio_path(@user, @portfolio)
     else
-      redirect_to new_user_portfolio_path(current_user)
+      redirect_to user_path(@user)
     end
   end
 
   def show
-    @portfolio = Portfolio.find_by(params[:id])
+    @user = User.find_by(id: params[:user_id])
+    @portfolio = @user.portfolios.find_by(id: params[:id])
     @position = Position.new
     @coins = Coin.all
   end
