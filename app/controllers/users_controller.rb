@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      redirect_to root_path
+      render :welcome
     end
   end
 
@@ -19,12 +19,6 @@ class UsersController < ApplicationController
     else
       redirect_to root_path
     end
-  end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :admin)
   end
 
 end
