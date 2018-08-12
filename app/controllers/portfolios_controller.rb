@@ -9,10 +9,11 @@ class PortfoliosController < ApplicationController
   def create
     @user = User.find_by(id: params[:user_id])
     @portfolio = @user.portfolios.build(portfolio_params)
-    if @portfolio.save
-      redirect_to user_portfolio_path(@user, @portfolio)
+    @portfolio.save
+    if @portfolio.errors.any?
+      render :new
     else
-      redirect_to user_path(@user)
+      redirect_to user_portfolio_path(@user, @portfolio)
     end
   end
 
