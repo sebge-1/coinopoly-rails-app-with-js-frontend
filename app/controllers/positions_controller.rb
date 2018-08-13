@@ -3,8 +3,14 @@ class PositionsController < ApplicationController
 
   def create
     @portfolio = Portfolio.find_by(id: params[:portfolio_id])
-    @position = @portfolio.positions.create(position_params)
-    redirect_to user_portfolio_path(current_user, @portfolio)
+    @position = Position.new(position_params)
+    if @position.save
+      redirect_to user_portfolio_path(current_user, @portfolio)
+    else
+      @coins = Coin.all
+      @user = User.find_by(id: params[:user_id])
+      render 'portfolios/show'
+    end
   end
 
   private
