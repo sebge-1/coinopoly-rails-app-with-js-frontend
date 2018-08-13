@@ -5,8 +5,10 @@ class PositionsController < ApplicationController
     @portfolio = Portfolio.find_by(id: params[:portfolio_id])
     @position = Position.new(position_params)
     if @position.save
+      @portfolio.positions << @position
       redirect_to user_portfolio_path(current_user, @portfolio)
     else
+      flash[:error] = 'Please enter a positive number.'
       @coins = Coin.all
       @user = User.find_by(id: params[:user_id])
       render 'portfolios/show'
