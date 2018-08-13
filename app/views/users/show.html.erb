@@ -8,7 +8,6 @@
     <%= link_to "#{portfolio.name}", user_portfolio_path(@user, portfolio) %><br>
   <% end %>
   <%= link_to 'Add another portfolio', new_user_portfolio_path(current_user) %>
-  <h4>Your single largest position is in <%= link_to @user.largest_position.coin.name, user_portfolio_path(@user, @user.largest_position.portfolio) %>, with a value of <%= @user.largest_position.value %> </h4>
 <% end %>
 
 <% if @user.admin %>
