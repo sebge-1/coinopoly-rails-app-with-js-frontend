@@ -11,4 +11,5 @@ class Portfolio < ApplicationRecord
     end
     @sum
   end
+
 end
