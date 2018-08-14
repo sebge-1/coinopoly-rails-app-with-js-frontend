@@ -33,6 +33,7 @@ gem 'omniauth-facebook'
 gem 'dotenv-rails'
 gem 'thin'
 gem 'rails_admin', '~> 1.3'
+gem 'public_activity'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development
