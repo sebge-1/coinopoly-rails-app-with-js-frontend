@@ -10,8 +10,6 @@ class User < ApplicationRecord
 
   def password_required
      return false if @called_omniauth == true
-     (authentications.empty? || !password.blank?)
-   end
-
+  end
 
 end

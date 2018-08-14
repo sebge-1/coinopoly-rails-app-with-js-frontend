@@ -18755,3 +18755,97 @@ Processing by PortfoliosController#show as HTML
 Completed 200 OK in 1181ms (Views: 1175.7ms | ActiveRecord: 0.9ms)
 
 
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+Migrating to AddProviderToUsers (20180814025020)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "password_digest" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "admin" boolean DEFAULT NULL, "uid" varchar DEFAULT NULL)[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (4.2ms)[0m  [1m[32mINSERT INTO "ausers" ("id","name","email","password_digest","created_at","updated_at","admin","uid")
+                     SELECT "id","name","email","password_digest","created_at","updated_at","admin","uid" FROM "users"[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (183.8ms)[0m  [1m[35mDROP TABLE "users"[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "email" varchar DEFAULT NULL, "password_digest" varchar DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "admin" boolean DEFAULT NULL, "uid" varchar DEFAULT NULL)[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "users" ("id","name","email","password_digest","created_at","updated_at","admin","uid")
+                     SELECT "id","name","email","password_digest","created_at","updated_at","admin","uid" FROM "ausers"[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.7ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20180814025020"]]
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/rake:23
+Started GET "/" for 127.0.0.1 at 2018-08-14 09:08:11 -0400
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/bin/thin:23
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (35.5ms)
+Completed 200 OK in 1821ms (Views: 1627.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-14 09:08:14 -0400
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 179ms (Views: 177.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auth/facebook" for 127.0.0.1 at 2018-08-14 09:08:21 -0400
+Started GET "/auth/facebook" for 127.0.0.1 at 2018-08-14 09:08:22 -0400
+Started GET "/auth/facebook/callback?code=AQCnn2ZD4PBjvmDMWOaI826keWro2D9-q3zaDc8VRQwnWk7yIukTFBc-4F6baWfZLE-f1tmg6fcdkuTkUdvR5lGYZ7vQr-8q7mKOMu9y9XGwQlcMXzkL9JV6gMo6O8PQu-QLUh2AIUHiK1h2q1k2vK5oPtAohxrR__QQv3U2TMDlFGxls0pt5l4xoQdrkvBr4HDh29232Vn2ksf5MOTtIBFvICjEZz0rD_bxr_hRFz62nvlDlz3ylgKS1mbWl_-Admn_Uo6FZKcQEvK3qzK-8HaxqqeOI_oevkXfR1tvmWxcNTKlIII2A30Lf050F_N9J3w&state=518bbddc9161057a7e12c3aab23c72879067f3fd81c5fd6b" for 127.0.0.1 at 2018-08-14 09:08:22 -0400
+Processing by SessionsController#create_from_facebook as HTML
+  Parameters: {"code"=>"AQCnn2ZD4PBjvmDMWOaI826keWro2D9-q3zaDc8VRQwnWk7yIukTFBc-4F6baWfZLE-f1tmg6fcdkuTkUdvR5lGYZ7vQr-8q7mKOMu9y9XGwQlcMXzkL9JV6gMo6O8PQu-QLUh2AIUHiK1h2q1k2vK5oPtAohxrR__QQv3U2TMDlFGxls0pt5l4xoQdrkvBr4HDh29232Vn2ksf5MOTtIBFvICjEZz0rD_bxr_hRFz62nvlDlz3ylgKS1mbWl_-Admn_Uo6FZKcQEvK3qzK-8HaxqqeOI_oevkXfR1tvmWxcNTKlIII2A30Lf050F_N9J3w", "state"=>"518bbddc9161057a7e12c3aab23c72879067f3fd81c5fd6b"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."uid" = ? LIMIT ?[0m  [["uid", "10102879608962720"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:18
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mPortfolio Load (0.6ms)[0m  [1m[34mSELECT "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ?[0m  [["user_id", 32]]
+  ↳ app/views/users/show.html.erb:3
+  Rendered users/show.html.erb within layouts/application (137.8ms)
+Completed 200 OK in 366ms (Views: 348.9ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/users/32/portfolios/8" for 127.0.0.1 at 2018-08-14 09:08:35 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"32", "id"=>"8"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  [1m[36mPortfolio Load (0.6ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 32], ["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:22
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.9ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 8]]
+  ↳ app/models/portfolio.rb:9
+  [1m[36mCoin Load (0.6ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/position.rb:8
+  [1m[36mCoin Load (0.5ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:16
+  Rendered portfolios/show.html.erb within layouts/application (2214.1ms)
+Completed 200 OK in 2553ms (Views: 2405.9ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2018-08-14 09:08:41 -0400
+Processing by SessionsController#destroy as HTML
+Redirected to https://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-08-14 09:08:41 -0400
+Processing by ApplicationController#welcome as HTML
+  Rendering application/welcome.html.erb within layouts/application
+  Rendered application/welcome.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 179ms (Views: 177.3ms | ActiveRecord: 0.0ms)
+
+
