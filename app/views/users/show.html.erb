@@ -10,8 +10,4 @@
   <%= link_to 'Add another portfolio', new_user_portfolio_path(current_user) %>
 <% end %>
 
-<% if @user.admin %>
-  <%= render 'form' %>
-<% end %>
-
 <p><%= link_to "Log Out", logout_path %></p>
