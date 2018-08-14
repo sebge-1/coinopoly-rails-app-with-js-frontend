@@ -1,0 +1,13 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %><br>
+<% end %>
+
+<% @users.each do |user| %>
+  <%= user.name %><br>
+
+  <% if current_user.following?(user) %>
+    <%= link_to 'Unfollow this user', unfollow_path(user) %><br>
+  <% elsif current_user != user %>
+    <%= link_to 'Follow this user', follow_path(user) %><br>
+  <% end %>
+<% end %>
