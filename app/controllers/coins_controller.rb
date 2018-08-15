@@ -6,7 +6,7 @@ class CoinsController < ApplicationController
 
   def create
     @coin = Coin.new(coin_params)
-    @coin.set_img_url
+    @coin.set_img_url && @coin.set_ticker
     if @coin.save
       redirect_to coin_path(@coin)
     else
