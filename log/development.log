@@ -28299,3 +28299,461 @@ Processing by ActivitiesController#follower_feed as HTML
 Completed 200 OK in 117ms (Views: 108.9ms | ActiveRecord: 3.5ms)
 
 
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 20:52:03 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/sebastiangertz/.rvm/gems/ruby-2.5.1/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  [1m[36mPosition Load (0.5ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.4ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPosition Load (0.1ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPosition Load (0.1ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:3
+  [1m[36mCoin Load (0.7ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  Rendered public_activity/position/_create.html.erb (24.2ms)
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:3
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  Rendered public_activity/position/_create.html.erb (1.3ms)
+  Rendered users/follower_feed.html.erb within layouts/application (91.4ms)
+Completed 200 OK in 989ms (Views: 903.9ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 20:52:40 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  [1m[36mPosition Load (0.6ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.5ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.3ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:3
+  [1m[36mCoin Load (1.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  Rendered public_activity/position/_create.html.erb (8.8ms)
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:3
+  [1m[36mCoin Load (0.4ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  Rendered public_activity/position/_create.html.erb (4.3ms)
+  Rendered users/follower_feed.html.erb within layouts/application (40.2ms)
+Completed 200 OK in 124ms (Views: 115.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/users/27/portfolios/4" for 127.0.0.1 at 2018-08-14 20:52:49 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"27", "id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 27], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:22
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 4]]
+  ↳ app/models/portfolio.rb:12
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCACHE Coin Load (0.0ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:16
+  Rendered portfolios/show.html.erb within layouts/application (6289.1ms)
+Completed 200 OK in 6346ms (Views: 6337.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/27/portfolios/4" for 127.0.0.1 at 2018-08-14 20:59:46 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"27", "id"=>"4"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  [1m[36mPortfolio Load (0.6ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 27], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:22
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.6ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 4]]
+  ↳ app/models/portfolio.rb:12
+  [1m[36mCoin Load (0.4ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCACHE Coin Load (0.0ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:16
+  Rendered portfolios/show.html.erb within layouts/application (6783.5ms)
+Completed 200 OK in 6946ms (Views: 6847.5ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:00:12 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.7ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:10
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (18.0ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `displayable?' for #<PublicActivity::Activity:0x00007fe6b7c620f0>
+Did you mean?  display):
+    1: <% @activities.each do |activity| %>
+    2:   <% if activity.displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314496580580'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314496580580'
+app/controllers/activities_controller.rb:11:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:01:06 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (22.9ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 2.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `displayable?' for #<PublicActivity::Activity:0x00007fe6b7c2b6b8>
+Did you mean?  display):
+    1: <% @activities.each do |activity| %>
+    2:   <% if activity.displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314477801040'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314477801040'
+app/controllers/activities_controller.rb:10:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:01:32 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (25.3ms)
+Completed 500 Internal Server Error in 104ms (ActiveRecord: 3.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `displayable?' for #<PublicActivity::Activity:0x00007fe6bc4c5b80>
+Did you mean?  display):
+    1: <% @activities.each do |activity| %>
+    2:   <% if activity.displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314451795800'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314451795800'
+app/controllers/activities_controller.rb:10:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:01:53 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (28.5ms)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `displayable?' for #<PublicActivity::Activity:0x00007fe6b8475738>
+Did you mean?  display):
+    1: <% @activities.each do |activity| %>
+    2:   <% if activity.displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314488157860'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314488157860'
+app/controllers/activities_controller.rb:10:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:03:33 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (15.4ms)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `displayable?' for #<PublicActivity::Activity:0x00007fe6b83dcba0>
+Did you mean?  display):
+    1: <% @activities.each do |activity| %>
+    2:   <% if activity.displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314487433580'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314487433580'
+app/controllers/activities_controller.rb:10:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:15:04 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (1.9ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (632.6ms)
+Completed 500 Internal Server Error in 683ms (ActiveRecord: 3.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `trackable_type' for #<#<Class:0x00007fe6bc1905c8>:0x00007fe6bd15a828>):
+    1: <% @activities.each do |activity| %>
+    2:   <% if displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/helpers/activities_helper.rb:3:in `displayable?'
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314495744660'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314495744660'
+app/controllers/activities_controller.rb:10:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:15:34 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (521.9ms)
+Completed 500 Internal Server Error in 565ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `activity' for #<#<Class:0x00007fe6bd522280>:0x00007fe6b852f980>
+Did you mean?  @activities):
+    1: <% @activities.each do |activity| %>
+    2:   <% if displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/helpers/activities_helper.rb:3:in `displayable?'
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314455822620'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314455822620'
+app/controllers/activities_controller.rb:10:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:15:54 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (5.4ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `trackable_type' for nil:NilClass):
+    1: <% @activities.each do |activity| %>
+    2:   <% if displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/helpers/activities_helper.rb:3:in `displayable?'
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314488832740'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314488832740'
+app/controllers/activities_controller.rb:10:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:16:49 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  Rendered users/follower_feed.html.erb within layouts/application (309.3ms)
+Completed 500 Internal Server Error in 351ms (ActiveRecord: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `trackable_type' for #<#<Class:0x00007fe6bd35b1b8>:0x00007fe6bd359700>):
+    1: <% @activities.each do |activity| %>
+    2:   <% if displayable? %>
+    3:     <%= link_to  activity.owner.name, activity.owner if activity.owner %>
+    4:     <%= render_activity activity %><br>
+    5:   <% end %>
+  
+app/helpers/activities_helper.rb:3:in `displayable?'
+app/views/users/follower_feed.html.erb:2:in `block in _app_views_users_follower_feed_html_erb__3201352319490619320_70314496789900'
+app/views/users/follower_feed.html.erb:1:in `each'
+app/views/users/follower_feed.html.erb:1:in `_app_views_users_follower_feed_html_erb__3201352319490619320_70314496789900'
+app/controllers/activities_controller.rb:10:in `follower_feed'
+Started GET "/users/27/follower_feed" for 127.0.0.1 at 2018-08-14 21:17:32 -0400
+Processing by ActivitiesController#follower_feed as HTML
+  Parameters: {"id"=>"27"}
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1m[34mSELECT "activities".* FROM "activities" ORDER BY created_at desc[0m
+  ↳ app/controllers/activities_controller.rb:9
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/helpers/users_helper.rb:7
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 27]]
+  ↳ app/models/user.rb:44
+  Rendering users/follower_feed.html.erb within layouts/application
+  [1m[36mPosition Load (0.7ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mPortfolio Load (1.0ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mPosition Load (0.1ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mPortfolio Load (0.1ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mPosition Load (0.1ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:3
+  [1m[36mCoin Load (0.8ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  Rendered public_activity/position/_create.html.erb (11.7ms)
+  [1m[36mPosition Load (0.2ms)[0m  [1m[34mSELECT  "positions".* FROM "positions" WHERE "positions"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mCACHE Portfolio Load (0.0ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/helpers/activities_helper.rb:3
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/users/follower_feed.html.erb:3
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/public_activity/position/_create.html.erb:1
+  Rendered public_activity/position/_create.html.erb (4.3ms)
+  Rendered users/follower_feed.html.erb within layouts/application (123.0ms)
+Completed 200 OK in 217ms (Views: 185.4ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/users/27/portfolios/4" for 127.0.0.1 at 2018-08-14 21:17:36 -0400
+Processing by PortfoliosController#show as HTML
+  Parameters: {"user_id"=>"27", "id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:21
+  [1m[36mPortfolio Load (0.2ms)[0m  [1m[34mSELECT  "portfolios".* FROM "portfolios" WHERE "portfolios"."user_id" = ? AND "portfolios"."id" = ? LIMIT ?[0m  [["user_id", 27], ["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/portfolios_controller.rb:22
+  Rendering portfolios/show.html.erb within layouts/application
+  [1m[36mPosition Load (0.3ms)[0m  [1m[34mSELECT "positions".* FROM "positions" WHERE "positions"."portfolio_id" = ?[0m  [["portfolio_id", 4]]
+  ↳ app/models/portfolio.rb:12
+  [1m[36mCoin Load (0.1ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCACHE Coin Load (0.0ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.3ms)[0m  [1m[34mSELECT  "coins".* FROM "coins" WHERE "coins"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/models/position.rb:11
+  [1m[36mCoin Load (0.2ms)[0m  [1m[34mSELECT "coins".* FROM "coins"[0m
+  ↳ app/views/portfolios/show.html.erb:16
+  Rendered portfolios/show.html.erb within layouts/application (12017.6ms)
+Completed 200 OK in 12089ms (Views: 12061.6ms | ActiveRecord: 2.2ms)
+
+

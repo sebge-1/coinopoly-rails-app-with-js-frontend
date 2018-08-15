@@ -9,4 +9,5 @@ class ActivitiesController < ApplicationController
     @activities = self.index.select {|activity| current_user.follower_ids.include?(activity.owner_id)}
     render 'users/follower_feed'
   end
+
 end
