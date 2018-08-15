@@ -11,4 +11,12 @@ class Position < ApplicationRecord
     self.coin.value * self.quantity
   end
 
+  def coin_name
+    self.coin.name
+  end
+
+  def portfolio_name
+    self.portfolio.name
+  end
+
 end

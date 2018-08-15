@@ -43,4 +43,5 @@ class User < ApplicationRecord
   def follower_ids
     following.map{|follower| follower.id}
   end
+
 end

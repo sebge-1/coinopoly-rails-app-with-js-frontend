@@ -24,11 +24,7 @@ class Coin < ApplicationRecord
   end
 
   def self.most_widely_held
-    self.all.sort{|a,b| b.positions.count <=> a.positions.count}
-  end
-
-  def coin_name
-    self.coin.name
+    self.all.sort{|a,b| b.positions.count <=> a.positions.count}[0]
   end
 
 end

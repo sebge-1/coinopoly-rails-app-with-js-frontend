@@ -1,7 +1,15 @@
 class CoinsController < ApplicationController
 
+  def index
+    @coins = Coin.all
+  end
+
   def create
     @coin = Coin.create(coin_params)
+  end
+
+  def show
+    @coin = Coin.find(params[:id])
   end
 
   private

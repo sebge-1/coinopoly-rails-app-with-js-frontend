@@ -1,0 +1,7 @@
+<h2>Most users hold <%= link_to Coin.with_most_holders.name, coin_path(Coin.with_most_holders) %> in their portfolio.</h2>
+<h2>The most widely held coin across all portfolios is <%= link_to Coin.most_widely_held.name, coin_path(Coin.most_widely_held) %></h2>
+
+<% @coins.each do |coin| %>
+  <%= link_to coin.name, coin_path(coin) %><br>
+  <h4><%= coin.number_of_users %> people hold this coin in their portfolios </h4><br>
+<% end %>
