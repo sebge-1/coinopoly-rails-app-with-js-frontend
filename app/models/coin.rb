@@ -27,4 +27,8 @@ class Coin < ApplicationRecord
     self.all.sort{|a,b| b.positions.count <=> a.positions.count}
   end
 
+  def coin_name
+    self.coin.name
+  end
+
 end

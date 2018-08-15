@@ -15,4 +15,8 @@ class Portfolio < ApplicationRecord
     @sum
   end
 
+  def portfolio_name
+    self.portfolio.name
+  end
+
 end
