@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_14_210226) do
+ActiveRecord::Schema.define(version: 2018_08_15_191709) do
 
   create_table "activities", force: :cascade do |t|
     t.string "trackable_type"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_08_14_210226) do
     t.string "ticker"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "img_url"
   end
 
   create_table "portfolios", force: :cascade do |t|

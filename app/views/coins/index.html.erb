@@ -3,5 +3,6 @@
 
 <% @coins.each do |coin| %>
   <%= link_to coin.name, coin_path(coin) %><br>
+  <img src= <%= coin.img_url %>>
   <h4><%= coin.number_of_users %> people hold this coin in their portfolios </h4><br>
 <% end %>

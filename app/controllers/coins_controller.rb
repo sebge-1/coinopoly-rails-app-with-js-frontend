@@ -5,7 +5,13 @@ class CoinsController < ApplicationController
   end
 
   def create
-    @coin = Coin.create(coin_params)
+    @coin = Coin.new(coin_params)
+    @coin.set_img_url
+    if @coin.save
+      redirect_to coin_path(@coin)
+    else
+      redirect_to 'admin'
+    end
   end
 
   def show

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'activities/index'
+  post "/admin/coin/new", to: 'coins#create'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :users do
     resources :portfolios
