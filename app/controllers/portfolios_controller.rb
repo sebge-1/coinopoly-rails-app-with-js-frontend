@@ -19,7 +19,7 @@ class PortfoliosController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:user_id])
-    @portfolio = @user.portfolios.find_by(id: params[:id])
+    @portfolio = @user.portfolios.find_by(id: params[:id]) 
     @position = Position.new
     @coins = Coin.all
   end

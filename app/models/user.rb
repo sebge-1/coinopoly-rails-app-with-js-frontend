@@ -39,4 +39,8 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def follower_ids
+    following.map{|follower| follower.id}
+  end
 end

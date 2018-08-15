@@ -1,4 +1,4 @@
-<h2>Welcome back to Coinopoly, <%= @user.name %></h2>
+<h2>Welcome to Coinopoly, <%= @user.name %></h2>
 
 <% if @user.portfolios.blank? %>
   <%= link_to 'Create your first portfolio', new_user_portfolio_path(current_user) %>
