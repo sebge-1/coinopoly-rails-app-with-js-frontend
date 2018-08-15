@@ -1,13 +1,18 @@
-<h2>Welcome to Coinopoly, <%= @user.name %></h2>
+<% if @user.id == session[:user_id] %>
+  <h2>Welcome to Coinopoly, <%= @user.name %></h2>
+  <h4>You are following <%= @user.following.count if @user.following %> users</h4>
 
-<% if @user.portfolios.blank? %>
-  <%= link_to 'Create your first portfolio', new_user_portfolio_path(current_user) %>
-<% else %>
-  <h4>Keep up with your portfolios:</h4>
-  <% @user.portfolios.each do |portfolio| %>
-    <%= link_to "#{portfolio.name}", user_portfolio_path(@user, portfolio) %><br>
+  <% if @user.portfolios.blank? %>
+    <%= link_to 'Create your first portfolio', new_user_portfolio_path(current_user) %>
+  <% else %>
+    <h4>Keep up with your portfolios:</h4>
+    <% @user.portfolios.each do |portfolio| %>
+      <%= link_to "#{portfolio.name}", user_portfolio_path(@user, portfolio) %><br>
+      <% end %>
+    <%= link_to 'Add another portfolio', new_user_portfolio_path(current_user) %>
   <% end %>
-  <%= link_to 'Add another portfolio', new_user_portfolio_path(current_user) %>
-<% end %>
 
-<p><%= link_to "Log Out", logout_path %></p>
+  <p><%= link_to "Log Out", logout_path %></p>
+<% else %>
+  <h2> You're viewing <%= @user.name %>'s page.
+<% end %>
