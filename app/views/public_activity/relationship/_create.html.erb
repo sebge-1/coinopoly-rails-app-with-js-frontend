@@ -1,0 +1,3 @@
+<% if activity.trackable %>
+  has started following <%= link_to activity.trackable.followed.name, user_path(activity.trackable.followed) %>
+<% end %>
