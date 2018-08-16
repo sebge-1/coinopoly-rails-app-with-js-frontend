@@ -1,7 +1,9 @@
 <h1>See what has been happening on Coinopoly: </h1>
 
 <% @activities.each do |activity| %>
-  [<%= activity.created_at.strftime('%H:%M:%S %-d %B %Y')
- %>] <%= link_to  activity.owner.name, activity.owner if activity.owner %>
-  <%= render_activity activity %><br>
+  <% if activity %>
+    [<%= activity.created_at.strftime('%H:%M:%S %-d %B %Y')
+    %>] <%= link_to activity.owner.name, activity.owner if activity.owner %>
+    <%= render_activity activity %><br>
+  <% end %>
 <% end %>

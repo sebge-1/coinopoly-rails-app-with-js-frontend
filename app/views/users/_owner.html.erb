@@ -2,7 +2,7 @@
 <h4>You are following <%= user.following.count if user.following %> users</h4>
 
 <% if user.portfolios.blank? %>
-  <%= link_to 'Create your first portfolio', new_user_portfolio_path(current_user) %>
+  <%= link_to 'Create your first portfolio', new_user_portfolio_path(user) %>
 <% else %>
   <h4>Keep up with your portfolios:</h4>
   <% user.portfolios.each do |portfolio| %>

@@ -1,5 +1,6 @@
-<% if @user.id == session[:user_id] %>
-  <%= render  partial: "owner", locals: {user: @user} %>
+<%= current_user.name %>
+<% if current_user == @user %>
+  <%= render  partial: "owner", locals: {user: current_user} %>
 <% else %>
   <%= render partial: "guest", locals: {user: @user} %>
 <% end %>
