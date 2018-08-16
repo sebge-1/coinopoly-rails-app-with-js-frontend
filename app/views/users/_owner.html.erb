@@ -1,6 +1,10 @@
 <h2>Welcome to Coinopoly, <%= user.name %></h2>
-<h4>You are following <%= user.following.count if user.following %> users</h4>
+<h4><%= link_to 'A lot has been going on', activities_index_path %> since you last logged in.</h4>
 
+<h4><%= user.following.count %> Following</h4>
+<%= link_to 'See what they got up to', "/users/#{user.id}/follower_feed" %>
+
+<h4><%=user.followers.count %> Followers</h4>
 <% if user.portfolios.blank? %>
   <%= link_to 'Create your first portfolio', new_user_portfolio_path(user) %>
 <% else %>
