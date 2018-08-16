@@ -1,14 +1,8 @@
 <h2> You're viewing <%= user.name %>'s page. </h2>
 <% if current_user.following?(user) %>
-  <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),
-    html: { method: :delete }) do |f| %>
-    <%= f.submit "Unfollow", class: "btn" %>
-  <% end %>
+  <%= render partial: "unfollow", locals: {user: user, current_user: current_user} %><br>
 <% else %>
-  <%= form_for(current_user.active_relationships.build) do |f| %>
-    <div><%= hidden_field_tag :followed_id, user.id %></div>
-    <%= f.submit "Follow", class: "btn btn-primary" %>
-  <% end %>
+  <%= render partial: "follow", locals: {user: user, current_user: current_user} %><br>
 <% end %>
 
 <% if user.portfolios.blank? %>
