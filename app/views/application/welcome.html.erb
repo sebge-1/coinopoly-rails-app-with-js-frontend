@@ -1,3 +1,7 @@
+<% if flash[:signup_error] %>
+  <div class="signup_error"><%= flash[:signup_error] %></div>
+<% end %>
+
 <h1>Sign Up to Coinopoly</h1>
 
 <%= form_for @user do |f| %>
