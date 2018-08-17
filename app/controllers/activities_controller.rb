@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
   end
 
   def follower_feed
-    @activities = self.index.select {|activity| current_user.follower_ids.include?(activity.owner_id)}
+      @activities = PublicActivity::Activity.order("created_at desc").where(owner_id: current_user.follower_ids, owner_type: "User")
     render 'users/follower_feed'
   end
 
