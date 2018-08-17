@@ -1,8 +1,29 @@
-<h2>Most users hold <%= link_to Coin.with_most_holders.name, coin_path(Coin.with_most_holders) %> in their portfolio.</h2>
-<h2>The most widely held coin across all portfolios is <%= link_to Coin.most_widely_held.name, coin_path(Coin.most_widely_held) %></h2>
+<div class="card-body">
+   <h3 class="card-title text-center">Most users hold <%= link_to Coin.with_most_holders.name, coin_path(Coin.with_most_holders) %> in their portfolio.</h3>
+</div>
+<div class="card-body">
+   <h3 class="card-title text-center">The most widely held coin across all portfolios is <%= link_to Coin.most_widely_held.name, coin_path(Coin.most_widely_held). %></h3>
+</div>
 
-<% @coins.each do |coin| %>
-  <%= link_to coin.name, coin_path(coin) %><br>
-  <img src= <%= coin.img_url %>>
-  <h4><%= coin.number_of_users %> people hold this coin in their portfolios </h4><br>
-<% end %>
+<div class="card-group">
+  <% @coins.each do |coin| %>
+      <!-- beginning of individual card -->
+      <div class="card">
+        <!-- header -->
+        <div class="card-header">
+          <h1 class="card-title"><%= link_to coin.name, coin_path(coin) %></h1>
+        </div>
+        <div class="card-body">
+          <p><%= coin.number_of_users %> people hold this coin in their portfolios </p>
+          <p class="card-text">Current price: $<%= coin.value %></p>
+        </div>
+        <!-- footer -->
+        <div class="card-footer">
+          <p>Ticker: <%= coin.ticker %></p>
+          <img src= <%= coin.img_url %> >
+        </div>
+        <!-- end of footer -->
+      </div>
+    <!-- end of card -->
+  <% end %>
+</div>
