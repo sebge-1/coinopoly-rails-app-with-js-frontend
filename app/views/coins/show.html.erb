@@ -1,4 +1,1 @@
-<%= @coin.name %><br>
-<%= @coin.value %><br>
-<img src= <%= @coin.img_url %>><br>
-<%= @coin.ticker %>
+<%= render partial: 'coin', locals: {coin: @coin} %>
