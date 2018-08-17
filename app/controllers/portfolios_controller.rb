@@ -21,7 +21,7 @@ class PortfoliosController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @portfolio = @user.portfolios.find_by(id: params[:id])
     @position = Position.new
-    @positions = @user.positions
+    @positions = @user.portfolio.positions
     @coins = Coin.all
   end
 
