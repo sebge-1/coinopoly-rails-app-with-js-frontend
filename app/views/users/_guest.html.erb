@@ -1,15 +1,37 @@
-<h2> You're viewing <%= user.name %>'s page. </h2>
-<% if current_user.following?(user) %>
-  <%= render partial: "unfollow", locals: {user: user, current_user: current_user} %><br>
-<% else %>
-  <%= render partial: "follow", locals: {user: user, current_user: current_user} %><br>
-<% end %>
+<div class="jumbotron text-center">
+  <h1 class="display-4"><h2> You're viewing <%= user.name %>'s page. </h2></h1>
+  <p class="lead"><% if current_user.following?(user) %>
+      <%= render partial: "unfollow", locals: {user: user, current_user: current_user} %><br>
+    <% else %>
+      <%= render partial: "follow", locals: {user: user, current_user: current_user} %><br>
+    <% end %>
+  </p>
 
-<% if user.portfolios.blank? %>
-  <h4>This user does not have any viewable portfolios</h4>
-<% else %>
-  <h4>This user has created the following portfolios:</h4>
-  <% user.portfolios.each do |portfolio| %>
-    <%= link_to "#{portfolio.name}", user_portfolio_path(user, portfolio) %><br>
-  <% end %>
-<% end %>
+  <div class="row">
+    <div class="col-lg-4 col-sm-4 col-12">
+      <div class="text-right">
+        <h4><%= user.following.count %></h4>
+        <span>Following</span>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-4 col-12">
+      <div class="text-right">
+        <h4><%=user.followers.count %></h4>
+        <span>Followers</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class ="text-center">
+    <% if user.portfolios.blank? %>
+      <h4>This user does not have any viewable portfolios</h4>
+    <% else %>
+      <h4>This user has created the following portfolios:</h4>
+      <div class ="card-group">
+        <%= render @portfolios %>
+      </div>
+    <% end %>
+  </div>
+  

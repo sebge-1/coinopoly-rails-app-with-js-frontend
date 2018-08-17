@@ -1,0 +1,8 @@
+    <div class="card">
+      <div class="card-header">
+        <h4><%= link_to portfolio.name, user_portfolio_path(@user, portfolio) %></h4>
+      </div>
+      <div class="card-body">
+        <p>Current value: $<%= portfolio.value %></p>
+      </div>
+    </div>

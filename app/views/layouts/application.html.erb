@@ -40,15 +40,16 @@
     </div>
   </nav>
 
-<!-- display flash messages to the user in case validations fail -->
-  <% flash.keys.each do |type| %>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <%= flash[type] %>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  <% end %>
+
+  <!-- display flash messages to the user in case validations fail -->
+    <% flash.keys.each do |type| %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <%= flash[type] %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
 
   <%= yield %>
 

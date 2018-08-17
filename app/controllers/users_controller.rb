@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @portfolios = @user.portfolios
     if logged_in?
       render 'show'
     else

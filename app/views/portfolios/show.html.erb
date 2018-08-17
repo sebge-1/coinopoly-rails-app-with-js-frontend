@@ -1,24 +1,22 @@
-<%= @portfolio.name %><br>
-<%= @portfolio.value %><br>
+<div class="jumbotron text-center">
+  <h1 class="display-4"><%= @portfolio.name %><br></h1>
+  <p class="lead"><%= @portfolio.value %><br></p>
+</div>
 
-<% @portfolio.positions.each do |position| %>
-  <%= position.coin.name %><br>
-  <%= position.quantity %><br>
-  <%= position.value %><br>
+<div class='card-group'>
+  <%= render @positions %>
+</div>
+
+<% if current_user == @user %>
+  <div class="text-center">
+    <%= form_for [@portfolio, @position] do |f| %>
+      <label>Coin:</label>
+      <%= f.collection_select(:coin_id, @coins, :id, :name) %>
+      <label>Quantity:</label>
+      <%= f.number_field :quantity %>
+      <%= f.hidden_field :user_id, value: @portfolio.user.id %>
+      <%= f.hidden_field :portfolio_id, value: @portfolio.id %>
+      <%= f.submit 'Add a balance to your portfolio' %>
+    <% end %>
+  </div>
 <% end %>
-
-<% if flash[:error] %>
-  <%= flash[:error] %>
-<% end %>
-
-<%= form_for [@portfolio, @position] do |f| %>
-  <label>Coin:</label>
-  <%= f.collection_select(:coin_id, @coins, :id, :name) %>
-  <label>Quantity:</label>
-  <%= f.number_field :quantity %>
-  <%= f.hidden_field :user_id, value: @portfolio.user.id %>
-  <%= f.hidden_field :portfolio_id, value: @portfolio.id %>
-  <%= f.submit 'Add a balance to your portfolio' %>
-<% end %>
-
-<p><%= link_to "Log Out", logout_path %></p>

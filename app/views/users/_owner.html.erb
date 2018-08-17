@@ -1,18 +1,35 @@
-<h2>Welcome to Coinopoly, <%= user.name %></h2>
-<h4><%= link_to 'A lot has been going on', activities_index_path %> since you last logged in.</h4>
+<div class="jumbotron text-center">
+  <h1 class="display-4">Welcome to Coinopoly, <%= user.name %></h1>
+  <p class="lead"><%= link_to 'A lot has been going on', activities_index_path %> since you last logged in.</p>
+  <p class="lead">
+    <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+  </p>
 
-<h4><%= user.following.count %> Following</h4>
-<%= link_to 'See what they got up to', "/users/#{user.id}/follower_feed" %>
+  <div class="row">
+    <div class="col-lg-4 col-sm-4 col-12">
+      <div class="text-right">
+        <h4><%= user.following.count %></h4>
+        <span>Following</span>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-4 col-12">
+      <div class="text-right">
+        <h4><%=user.followers.count %></h4>
+        <span>Followers</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h4><%=user.followers.count %> Followers</h4>
-<% if user.portfolios.blank? %>
-  <%= link_to 'Create your first portfolio', new_user_portfolio_path(user) %>
-<% else %>
-  <h4>Keep up with your portfolios:</h4>
-  <% user.portfolios.each do |portfolio| %>
-    <%= link_to "#{portfolio.name}", user_portfolio_path(user, portfolio) %><br>
+<div class="container">
+  <div class ="text-center">
+    <% if @portfolios.blank? %>
+      <%= link_to 'Create your first portfolio', new_user_portfolio_path(user) %>
+    <% else %>
+      <h4>Keep up with your portfolios:</h4>
+      <div class ="card-group">
+        <%= render @portfolios %>
+      </div>
     <% end %>
-  <%= link_to 'Add another portfolio', new_user_portfolio_path(current_user) %>
-<% end %>
-
-<p><%= link_to "Log Out", logout_path %></p>
+    </div>
+  </div>
