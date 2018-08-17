@@ -15,6 +15,12 @@ class PositionsController < ApplicationController
     end
   end
 
+  def destroy
+    @portfolio = Portfolio.find_by(id: params[:portfolio_id])
+    @portfolio.positions.delete(Position.find(params[:id]))
+    redirect_to user_portfolio_path(@portfolio.user, @portfolio)
+  end
+
   private
   def position_params
     params.require(:position).permit(:coin_id, :portfolio_id, :user_id, :quantity)

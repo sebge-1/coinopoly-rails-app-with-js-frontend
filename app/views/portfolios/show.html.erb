@@ -1,6 +1,9 @@
 <div class="jumbotron text-center">
-  <h1 class="display-4"><%= @portfolio.name %><br></h1>
-  <p class="lead"><%= @portfolio.value %><br></p>
+  <h1 class="display-4"><%= @portfolio.name %></h1>
+  <p class="lead"><%= @portfolio.value %></p>
+  <% if current_user == @user %>
+    <%= render partial: 'delete', locals: {user: current_user, portfolio: @portfolio} %>
+  <% end %>
 </div>
 
 <div class='card-group'>
@@ -9,6 +12,6 @@
 
 <% if current_user == @user %>
   <div class="text-center">
-    <%= render partial: 'positions/form', locals: {portfolio: @portfolio, position: @position, coins: @coins} %> 
+    <%= render partial: 'positions/form', locals: {portfolio: @portfolio, position: @position, coins: @coins} %>
   </div>
 <% end %>

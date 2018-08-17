@@ -5,6 +5,9 @@
   <div class="card-body">
     <p>Quantity: <%= position.quantity %></p>
     <p>Value: $<%= position.value %></p>
+    <% if current_user == @user %>
+      <%= render partial: 'positions/delete', locals: {portfolio: position.portfolio, position: position} %>
+    <% end %>
   </div>
   <div class="card-footer">
     <img src="<%= position.coin.img_url %>">

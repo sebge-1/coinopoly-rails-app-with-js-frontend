@@ -19,10 +19,16 @@ class PortfoliosController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:user_id])
-    @portfolio = @user.portfolios.find_by(id: params[:id])
+    @portfolio = Portfolio.find_by(id: params[:id])
     @position = Position.new
     @positions = @portfolio.positions
     @coins = Coin.all
+  end
+
+  def destroy
+    @user = User.find_by(id: params[:user_id])
+    @user.portfolios.delete(Portfolio.find(params[:id]))
+    redirect_to user_path(@user)
   end
 
   private
