@@ -1,7 +1,3 @@
-<% if flash[:signup_error] %>
-  <div class="signup_error"><%= flash[:signup_error] %></div>
-<% end %>
-
 <h1>Sign Up to Coinopoly</h1>
 
 <%= form_for @user do |f| %>
@@ -12,10 +8,6 @@
   <label>Password</label><br>
   <%= f.password_field :password %><br>
   <%= f.submit 'Signup' %>
-<% end %>
-
-<% if flash[:login_error] %>
-  <div class="login_error"><%= flash[:login_error] %></div>
 <% end %>
 
 <%= link_to('Log in with Facebook!', '/auth/facebook') %>
