@@ -1,0 +1,9 @@
+<%= form_for [@portfolio, @position] do |f| %>
+  <label>Coin:</label>
+  <%= f.collection_select(:coin_id, coins, :id, :name) %>
+  <label>Quantity:</label>
+  <%= f.number_field :quantity %>
+  <%= f.hidden_field :user_id, value: portfolio.user.id %>
+  <%= f.hidden_field :portfolio_id, value: portfolio.id %>
+  <%= f.submit 'Add a balance to your portfolio' %>
+<% end %>
