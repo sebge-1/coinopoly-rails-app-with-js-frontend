@@ -1,1 +1,5 @@
-has just created a <%= link_to 'new portfolio', user_portfolio_path(activity.trackable.user, activity.trackable) %> 
+<% if activity.trackable %>
+  has just created a <%= link_to 'new portfolio', user_portfolio_path(activity.trackable.user, activity.trackable) %>
+<% else %>
+  has created a portfolio which has since been removed.
+<% end %>
