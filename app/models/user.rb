@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :portfolios
+  has_many :portfolios, dependent: :destroy
   has_many :positions, through: :portfolios
   # allow user to follow other users
   has_many :active_relationships, class_name:  "Relationship",

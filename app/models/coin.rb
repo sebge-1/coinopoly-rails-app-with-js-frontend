@@ -1,5 +1,5 @@
 class Coin < ApplicationRecord
-  has_many :positions
+  has_many :positions, dependent: :destroy
 
   validates :name, presence: true
 

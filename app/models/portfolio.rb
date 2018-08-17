@@ -3,7 +3,7 @@ class Portfolio < ApplicationRecord
   tracked except: :delete, owner: ->(controller, model) {controller && controller.current_user}
 
   belongs_to :user
-  has_many :positions
+  has_many :positions, dependent: :destroy
 
   validates :name, presence: true
 
