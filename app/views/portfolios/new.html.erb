@@ -1,7 +1,1 @@
-<%= form_for [current_user, @portfolio] do |f| %>
-  <label>Name:</label><br>
-  <%= f.text_field :name %><br>
-  <label>Make private?</label><br>
-  <%= f.check_box :public, {}, checked_value = false, unchecked_value = true %>
-  <%= f.submit %>
-<% end %>
+<%= render partial: 'form', locals: {user: current_user, portfolio: @portfolio} %>

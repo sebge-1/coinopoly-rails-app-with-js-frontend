@@ -1,0 +1,7 @@
+<%= form_for [user, portfolio] do |f| %>
+  <label>Name:</label><br>
+  <%= f.text_field :name %><br>
+  <label>Make private?</label><br>
+  <%= f.check_box :public, {}, checked_value = false, unchecked_value = true %>
+  <%= f.submit %>
+<% end %>

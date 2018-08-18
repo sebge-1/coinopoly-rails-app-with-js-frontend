@@ -25,6 +25,18 @@ class PortfoliosController < ApplicationController
     @coins = Coin.all
   end
 
+  def edit
+    @user = User.find_by(id: params[:user_id])
+    @portfolio = Portfolio.find(params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:user_id])
+    @portfolio = Portfolio.find(params[:id])
+    @portfolio.update(portfolio_params)
+    redirect_to user_portfolio_path(@user, @portfolio)
+  end
+
   def destroy
     @user = User.find_by(id: params[:user_id])
     @user.portfolios.delete(Portfolio.find(params[:id]))
