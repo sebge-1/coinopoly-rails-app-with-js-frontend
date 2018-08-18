@@ -1,0 +1,27 @@
+<% if current_user != user %>
+  <div class="card">
+
+    <div class="card-header">
+      <h1 class="card-title">
+        <%= link_to user.name, user_path(user) %>
+      </h1>
+    </div>
+
+    <div class="card-body">
+      <% if user.portfolios.any?{|portfolio| portfolio.public} %>
+        <p>Number of viewable portfolios: <%= user.portfolios.select{|portfolio| portfolio.public}.count %>.</p>
+      <% else %>
+        <p>This user does not have any viewable portfolios.</p>
+      <% end %>
+    </div>
+
+    <div class="card-footer">
+      <% if current_user.following?(user) %>
+        <%= render partial: "unfollow", locals: {user: user} %>
+      <% else %>
+        <%= render partial: "follow", locals: {user: user} %><br>
+      <% end %>
+    </div>
+    
+  </div>
+<% end %>
