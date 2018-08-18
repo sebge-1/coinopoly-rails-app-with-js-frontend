@@ -15,6 +15,19 @@ class PositionsController < ApplicationController
     end
   end
 
+  def edit
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @position = Position.find_by(params[:id])
+    @coins = Coin.all
+  end
+
+  def update
+    @portfolio = Portfolio.find(params[:portfolio_id])
+    @position = Position.find_by(params[:id])
+    @position.update(position_params)
+    redirect_to user_portfolio_path(@portfolio.user, @portfolio)
+  end
+
   def destroy
     @portfolio = Portfolio.find_by(id: params[:portfolio_id])
     @portfolio.positions.delete(Position.find(params[:id]))

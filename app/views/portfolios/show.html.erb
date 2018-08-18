@@ -2,9 +2,9 @@
   <h1 class="display-4"><%= @portfolio.name %></h1>
   <p class="lead">Total value: $<%= @portfolio.value %></p>
   <% if current_user == @user %>
-  <div class="text-right">
-    <%= link_to image_tag("https://png.icons8.com/material-sharp/50/000000/pencil.png", height: "15", width: "15"), edit_user_portfolio_path(@user, @portfolio) %>
-  </div>
+    <div class="text-right">
+      <%= link_to image_tag("https://png.icons8.com/material-sharp/50/000000/pencil.png", height: "15", width: "15"), edit_user_portfolio_path(@user, @portfolio) %>
+    </div>
     <div class="text-right">
       <%= render partial: 'delete', locals: {user: @user, portfolio: @portfolio} %>
     </div>
