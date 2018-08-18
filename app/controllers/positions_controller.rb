@@ -17,13 +17,13 @@ class PositionsController < ApplicationController
 
   def edit
     @portfolio = Portfolio.find(params[:portfolio_id])
-    @position = Position.find_by(params[:id])
+    @position = @portfolio.positions.find_by(id: params[:id])
     @coins = Coin.all
   end
 
   def update
     @portfolio = Portfolio.find(params[:portfolio_id])
-    @position = Position.find_by(params[:id])
+    @position = @portfolio.positions.find_by(id: params[:id])
     @position.update(position_params)
     redirect_to user_portfolio_path(@portfolio.user, @portfolio)
   end
