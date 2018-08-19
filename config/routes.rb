@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :users do
     resources :portfolios
+    member do
+      get :following, :followers
+    end
   end
   resources :portfolios do
     resources :positions

@@ -9,13 +9,13 @@
     <div class="col-lg-4 col-sm-4 col-12">
       <div class="text-right">
         <h4><%= user.following.count %></h4>
-        <span>Following</span>
+        <span><%= link_to 'Following', following_user_path(user) %></span>
       </div>
     </div>
     <div class="col-lg-4 col-sm-4 col-12">
       <div class="text-right">
         <h4><%=user.followers.count %></h4>
-        <span>Followers</span>
+        <span><%= link_to 'Followers', followers_user_path(user) %></span>
       </div>
     </div>
   </div>
