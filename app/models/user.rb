@@ -11,20 +11,19 @@ class User < ApplicationRecord
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
-
+  #Disable inbuilt BCrypt validations to avoid bugs with FB login
   has_secure_password validations: false
-
+  # require password for form signups but disable for omniauth login flow
   validates_presence_of :password, :on => :create, :if => :password_required
   validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
-  @omniauth_called = false
   # changes to true only through sessions#create_from_facebook
+  @omniauth_called = false
+  # helper_method to help with validates_presence_of macro
   def password_required
     true unless @omniauth_called
   end
-
-  # require password for form signups but disable for omniauth login flow
 
   # Follows a user.
   def follow(other_user)
