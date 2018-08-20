@@ -1,5 +1,7 @@
 class Portfolio < ApplicationRecord
   include PublicActivity::Model
+  include PortfoliosHelper
+  
   tracked except: :destroy, owner: ->(controller, model) {controller && controller.current_user}
 
   belongs_to :user

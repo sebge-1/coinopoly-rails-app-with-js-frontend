@@ -2,8 +2,8 @@
   <label>Coin:</label>
   <%= f.collection_select(:coin_id, coins, :id, :name) %>
   <label>Quantity:</label>
-  <%= f.number_field :quantity, placeholder: @position.errors.full_messages_for(:quantity).first %>
+  <%= f.number_field :quantity, placeholder: @position.errors.full_messages_for(:quantity).first, step: :any %>
   <%= f.hidden_field :user_id, value: portfolio.user.id %>
   <%= f.hidden_field :portfolio_id, value: portfolio.id %>
-  <%= f.submit form_action %>
+  <%= f.submit position_form_action %>
 <% end %>

@@ -1,5 +1,5 @@
 module PositionsHelper
-  def form_action
+  def position_form_action
     if @position.id.present?
       "Update your position"
     else

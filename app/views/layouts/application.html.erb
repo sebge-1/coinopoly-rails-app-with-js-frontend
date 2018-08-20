@@ -40,9 +40,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/coins">Coins</a>
           </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
+          <% if current_user %>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          <% end %>
       </ul>
     </div>
   </nav>

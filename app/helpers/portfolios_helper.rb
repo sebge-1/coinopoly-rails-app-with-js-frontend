@@ -1,5 +1,5 @@
 module PortfoliosHelper
-  def form_action
+  def portfolio_form_action
     if @portfolio.id.present?
       "Update your portfolio"
     else
