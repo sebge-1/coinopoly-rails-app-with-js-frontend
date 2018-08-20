@@ -20,10 +20,13 @@ If you are looking to help to with a code contribution, our project uses Rails a
 - Use git commit -m "Insert a short message of the changes made here" to store the contents of the index with a descriptive message.
 - Push the changes to the remote repository using git push origin branch-name-here.
 - Submit a pull request to the upstream repository.
-- Title the pull request with a short description of the changes made and the issue or bug number associated with your change. For example, you can title an issue like so "Added more log outputting to resolve #4352". In the description of the pull request, explain the changes that you made, any issues you think exist with the pull request you made, and any questions you have for the maintainer. It's OK if your pull request is not perfect (no pull request is), the reviewer will be able to help you fix any problems and improve it! 
+- Title the pull request with a short description of the changes made and the issue or bug number associated with your change. For example, you can title an issue like so "Added more log outputting to resolve #4352". In the description of the pull request, explain the changes that you made, any issues you think exist with the pull request you made, and any questions you have for the maintainer. It's OK if your pull request is not perfect (no pull request is), the reviewer will be able to help you fix any problems and improve it!
 - Wait for the pull request to be reviewed by a maintainer.
 - Make changes to the pull request if the reviewing maintainer recommends them.
 - Celebrate your success after your pull request is merged!
 
 ## Where can I go for help?
 If you need help, you can direct question to sebgertz@gmail.com
+
+# Licensing Statement
+This project has been licensed under the MIT open source license.
