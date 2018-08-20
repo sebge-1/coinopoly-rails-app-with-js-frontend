@@ -21,11 +21,14 @@ class SessionsController < ApplicationController
       u.name = auth['info']['name']
       u.email = auth['info']['email']
     end
-    if @user
+    if @user.save
       session[:user_id] = @user.id
-      render 'users/show'
+      redirect_to user_path(@user)
     else
-      redirect_to root_path
+      flash[:error] = "Something went wrong. Try again."
+      @sign_up_user = User.new
+      @sign_in_user = User.create(user_params)
+      render :welcome
     end
   end
 

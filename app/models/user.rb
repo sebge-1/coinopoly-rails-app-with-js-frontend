@@ -12,8 +12,9 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
-  has_secure_password
-  validates_presence_of :password, :on => :create, :if => :password_required
+  has_secure_password validations: false
+
+  validates :password, presence: true, on: :password_required
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 
