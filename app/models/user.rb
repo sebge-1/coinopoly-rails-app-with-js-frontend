@@ -14,17 +14,17 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
 
-  validates :password, presence: true, on: :password_required
-  validates :name, presence: true
+  validates_presence_of :password, :on => :create, :if => :password_required
+  validates :name, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
 
+  @omniauth_called = false
   # changes to true only through sessions#create_from_facebook
-  @called_omniauth = false
+  def password_required
+    true unless @omniauth_called
+  end
 
   # require password for form signups but disable for omniauth login flow
-  def password_required
-     return false if @called_omniauth == true
-  end
 
   # Follows a user.
   def follow(other_user)

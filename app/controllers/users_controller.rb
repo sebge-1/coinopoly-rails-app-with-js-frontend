@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @sign_up_user = User.new(user_params)
     if @sign_up_user.save
-      session[:user_id] = @sign_up_user.id
+       session[:user_id] = @sign_up_user.id
       redirect_to user_path(@sign_up_user)
     else
       flash[:error] = 'Something went wrong. Try again.'
