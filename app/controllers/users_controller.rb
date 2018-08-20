@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @sign_up_user.id
       redirect_to user_path(@sign_up_user)
     else
-      flash[:signup_error] = 'Something went wrong. Try again.'
+      flash[:error] = 'Something went wrong. Try again.'
       @sign_in_user = User.new
       render :welcome
     end

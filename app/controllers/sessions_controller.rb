@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @sign_in_user.id
       redirect_to user_path(@sign_in_user)
     else
-      flash[:login_error] = "Invalid signin credentials. Try again."
+      flash[:error] = "Invalid signin credentials. Try again."
       @sign_up_user = User.new
       @sign_in_user = User.create(user_params)
       render :welcome
