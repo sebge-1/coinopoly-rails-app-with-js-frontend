@@ -30,7 +30,13 @@ class PositionsController < ApplicationController
     @portfolio = Portfolio.find(params[:portfolio_id])
     @position = @portfolio.positions.find_by(id: params[:id])
     @position.update(position_params)
-    redirect_to user_portfolio_path(@portfolio.user, @portfolio)
+    if @position.errors.any?
+      flash[:error] = "Please enter a positive number."
+      @coins = Coin.all
+      render 'new'
+    else
+      redirect_to user_portfolio_path(@portfolio.user, @portfolio)
+    end
   end
 
   def destroy

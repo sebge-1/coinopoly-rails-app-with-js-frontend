@@ -34,7 +34,12 @@ class PortfoliosController < ApplicationController
     @user = User.find_by(id: params[:user_id])
     @portfolio = Portfolio.find(params[:id])
     @portfolio.update(portfolio_params)
-    redirect_to user_portfolio_path(@user, @portfolio)
+    if @portfolio.errors.any?
+      flash[:error] = "Something went wrong. Try again."
+      render :new
+    else
+      redirect_to user_portfolio_path(@user, @portfolio)
+    end
   end
 
   def destroy

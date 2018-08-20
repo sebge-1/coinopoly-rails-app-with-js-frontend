@@ -6,11 +6,11 @@
 
         <%= form_for @sign_up_user do |f| %>
           <label>Name:</label><br>
-          <%= f.text_field :name %><br>
+          <%= f.text_field :name, placeholder: @sign_up_user.errors.full_messages_for(:name).first %><br>
           <label>Email:</label><br>
-          <%= f.email_field :email %><br>
+          <%= f.email_field :email, placeholder: @sign_up_user.errors.full_messages_for(:email).first %><br>
           <label>Password</label><br>
-          <%= f.password_field :password %><br>
+          <%= f.password_field :password, placeholder: @sign_up_user.errors.full_messages_for(:password).first %><br>
           <%= f.submit 'Signup' %>
         <% end %>
       </div>
@@ -20,9 +20,9 @@
         <h1>Login</h1>
         <%= form_for @sign_in_user, :url => signin_path do |f| %>
           <label>Name:</label><br>
-          <%= f.text_field :name %><br>
+          <%= f.text_field :name, placeholder: @sign_in_user.errors.full_messages_for(:name).first %><br>
           <label>Password</label><br>
-          <%= f.password_field :password %><br>
+          <%= f.password_field :password, placeholder: @sign_in_user.errors.full_messages_for(:password).first %><br>
           <%= f.submit 'Log In' %>
         <% end %>
       </div>
