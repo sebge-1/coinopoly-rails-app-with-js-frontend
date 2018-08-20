@@ -17,6 +17,6 @@
 
 <% if current_user == @user %>
   <div class="text-center">
-    <%= render partial: 'positions/form', locals: {portfolio: @portfolio, position: @position, coins: @coins} %>
+    <%= link_to 'Add a position to this portfolio', new_portfolio_position_path(@portfolio, @position) %>
   </div>
 <% end %>

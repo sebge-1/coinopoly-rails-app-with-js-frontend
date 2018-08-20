@@ -1,17 +1,22 @@
 class PositionsController < ApplicationController
   include UsersHelper
 
+  def new
+    @portfolio = Portfolio.find_by(id: params[:portfolio_id])
+    @position = Position.new
+    @coins = Coin.all
+  end
+
   def create
     @portfolio = Portfolio.find_by(id: params[:portfolio_id])
-    @position = Position.new(position_params)
-    if @position.save
-      @portfolio.positions << @position
-      redirect_to user_portfolio_path(current_user, @portfolio)
-    else
+    @position = @portfolio.positions.build(position_params)
+    if !@position.save
       flash[:error] = 'Please enter a positive number.'
       @coins = Coin.all
-      @user = User.find_by(id: params[:user_id])
-      render 'portfolios/show'
+      render "new"
+    else
+      @portfolio.positions << @position
+      redirect_to user_portfolio_path(current_user, @portfolio)
     end
   end
 

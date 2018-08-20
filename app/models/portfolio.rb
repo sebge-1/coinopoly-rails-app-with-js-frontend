@@ -10,7 +10,9 @@ class Portfolio < ApplicationRecord
   def value
     @sum = 0
     self.positions.each do |pos|
-      @sum += pos.value
+      if pos.valid?
+        @sum += pos.value
+      end
     end
     @sum
   end
