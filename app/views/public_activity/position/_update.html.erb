@@ -1,0 +1,5 @@
+<% if activity.trackable %>
+  has just updated their <%= activity.trackable.coin_name %> position in their <%= link_to activity.trackable.portfolio_name, user_portfolio_path(activity.trackable.user, activity.trackable.portfolio) %> portfolio.
+<% else %>
+  has updated a portfolio which has since been removed.
+<% end %>

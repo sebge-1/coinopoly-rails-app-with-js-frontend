@@ -8,8 +8,8 @@
     </div>
 
     <div class="card-body">
-      <% if user.portfolios.any?{|portfolio| portfolio.public} %>
-        <p>Number of viewable portfolios: <%= user.portfolios.select{|portfolio| portfolio.public}.count %>.</p>
+      <% if public_portfolios?(user) %>
+        <p>Number of viewable portfolios: <%= public_portfolio_number(user) %>.</p>
       <% else %>
         <p>This user does not have any viewable portfolios.</p>
       <% end %>
@@ -22,6 +22,6 @@
         <%= render partial: "follow", locals: {user: user} %><br>
       <% end %>
     </div>
-    
+
   </div>
 <% end %>
