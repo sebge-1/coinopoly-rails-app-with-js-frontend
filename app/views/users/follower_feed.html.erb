@@ -1,1 +1,5 @@
-<%= render partial: 'public_activity/activities/activity', collection: @activities %>
+<% if @activites.nil? %>
+  <h4>Not much has happened yet. Click <%= link_to 'here', users_path %> to follow more people.<h4>
+<% else %>
+  <%= render partial: 'public_activity/activities/activity', collection: @activities %>
+<% end %>

@@ -4,7 +4,7 @@
       <div id='signup'>
         <h1>Sign Up</h1>
 
-        <%= form_for @user do |f| %>
+        <%= form_for @sign_up_user do |f| %>
           <label>Name:</label><br>
           <%= f.text_field :name %><br>
           <label>Email:</label><br>
@@ -18,7 +18,7 @@
     <div class="col-xs-6 m-5">
       <div id='login'>
         <h1>Login</h1>
-        <%= form_for @user, :url => signin_path do |f| %>
+        <%= form_for @sign_in_user, :url => signin_path do |f| %>
           <label>Name:</label><br>
           <%= f.text_field :name %><br>
           <label>Password</label><br>
