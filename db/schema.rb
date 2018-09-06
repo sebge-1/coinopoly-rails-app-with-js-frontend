@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_20_193303) do
+ActiveRecord::Schema.define(version: 2018_09_06_204922) do
 
   create_table "activities", force: :cascade do |t|
     t.string "trackable_type"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 2018_08_20_193303) do
   end
 
   create_table "positions", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "portfolio_id"
     t.integer "coin_id"
     t.decimal "quantity"
