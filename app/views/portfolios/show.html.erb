@@ -1,6 +1,6 @@
 <div class="jumbotron text-center">
-  <h1 class="display-4"><%= @portfolio.name %></h1>
-  <p class="lead">Total value: $<%= @portfolio.value %></p>
+  <h1 class="display-4 name"><%= @portfolio.name %></h1>
+  <p class="lead value">Total value: $<%= @portfolio.value %></p>
   <% if current_user == @user %>
     <div class="text-right">
       <%= link_to image_tag("https://png.icons8.com/material-sharp/50/000000/pencil.png", height: "15", width: "15"), edit_user_portfolio_path(@user, @portfolio) %>
@@ -20,3 +20,37 @@
     <%= link_to 'Add a position to this portfolio', new_portfolio_position_path(@portfolio, @position), class: "btn btn-lg btn-secondary" %>
   </div>
 <% end %>
+
+<a href="#" class="js-back float-left btn btn-secondary" data-id="<%=@portfolio.id%>">Previous portfolio</a>
+
+<a href="#" class="js-next float-right btn btn-secondary" data-id="<%=@portfolio.id%>">Next portfolio</a>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-next").on("click", function() {
+    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    $.getJSON("/portfolios/" + nextId, function(data) {
+      console.log(data)
+      $(".name").text(data["name"]);
+      // $(".value") - this will need a JS method
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });return false;
+  });
+});
+</script>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-back").on("click", function() {
+    var backId = parseInt($(".js-next").attr("data-id")) -1;
+    $.getJSON("/portfolios/" + backId, function(data) {
+      console.log(data)
+      $(".name").text(data["name"]);
+      // $(".value") - this will need a JS method
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });return false;
+  });
+});
+</script>
