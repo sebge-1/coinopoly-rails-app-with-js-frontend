@@ -1,5 +1,5 @@
 <% if activity.trackable %>
-  has just added <%= activity.trackable.quantity %> <%= link_to activity.trackable.coin_name, activity.trackable.coin %> to his portfolio <%= link_to activity.trackable.portfolio_name, user_portfolio_path(activity.trackable.user, activity.trackable.portfolio) %>
+  has just added <%= activity.trackable.quantity %> <%= link_to activity.trackable.coin_name, activity.trackable.coin %> to his portfolio <%= link_to activity.trackable.portfolio_name, user_portfolio_path(activity.trackable.portfolio.user, activity.trackable.portfolio) %>
 <% else %>
   has created a position which has since been removed.
 <% end %>
