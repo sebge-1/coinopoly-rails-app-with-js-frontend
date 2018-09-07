@@ -1,3 +1,5 @@
 class PositionSerializer < ActiveModel::Serializer
-  attributes :id, :quantity, :portfolio_id, :coin_id
+  attributes :id, :quantity
+  belongs_to :portfolio
+  belongs_to :user
 end

@@ -23,6 +23,10 @@ class PortfoliosController < ApplicationController
     @position = Position.new
     @positions = @portfolio.positions
     @coins = Coin.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @portfolio }
+    end
   end
 
   def edit
