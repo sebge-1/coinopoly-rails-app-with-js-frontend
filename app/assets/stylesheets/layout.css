@@ -1,3 +1,21 @@
 div.field_with_errors {
   border: 1px solid red;
 }
+
+div#particles-js {
+  background: #2d405e;
+  position: relative;
+  height: 100vh;
+}
+
+div#login-options {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 400px;
+  height: 400px;
+  color: white;
+}

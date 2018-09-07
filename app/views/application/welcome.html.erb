@@ -1,7 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-6 m-5">
-      <div id='signup'>
+  <div class="row" id="login-options">
+    <div class="col-xs-6 m-5 mx-auto" id='signup'>
+      <div>
         <h1>Sign Up</h1>
 
         <%= form_for @sign_up_user do |f| %>
@@ -15,8 +14,8 @@
         <% end %>
       </div>
     </div>
-    <div class="col-xs-6 m-5">
-      <div id='login'>
+    <div class="col-xs-6 m-5 mx-auto" id='login'>
+      <div>
         <h1>Login</h1>
         <%= form_for @sign_in_user, :url => signin_path do |f| %>
           <label>Name:</label><br>
@@ -27,7 +26,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-xs-6 m-5">
+    <div class="col-xs-6 m-5 mx-auto" id="fb-login">
       <a href="/auth/facebook" title="Facebook" class="btn btn-facebook btn-lg"><i class="fa fa-facebook fa-fw"></i> Log in with Facebook</a>
   </div>
 </div>
