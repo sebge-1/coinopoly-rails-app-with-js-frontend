@@ -28,10 +28,8 @@
     <% if user.portfolios.blank? %>
       <h4>This user does not have any viewable portfolios</h4>
     <% else %>
-      <h4>This user has created the following portfolios:</h4>
+      <a href="#" id="show-more" class="float-left btn btn-secondary" data-id="<%=@user.id%>">Show portfolios</a>
       <div class ="card-group">
-        <%= render @portfolios %>
       </div>
     <% end %>
   </div>
-  

@@ -26,11 +26,12 @@
     <% if @portfolios.blank? %>
       <%= link_to 'Create your first portfolio', new_user_portfolio_path(user) %>
     <% else %>
-      <h4>Keep up with your portfolios:</h4>
+      <a href="#" id="show-more" class="btn btn-secondary" data-id="<%=@user.id%>">Show portfolios</a>
       <div class ="card-group">
-        <%= render @portfolios %>
       </div>
-      <h4><%= link_to 'Add another portfolio', new_user_portfolio_path(user), class: "btn btn-lg btn-secondary" %> </h4>
+      <div id="add" class="mt-5">
+        <h4><%= link_to 'Add another portfolio', new_user_portfolio_path(user), class: "bt btn-lg btn-secondary" %> </h4>
+      </div>
     <% end %>
     </div>
   </div>
