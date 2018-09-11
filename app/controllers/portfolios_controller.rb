@@ -6,6 +6,12 @@ class PortfoliosController < ApplicationController
     @portfolio = Portfolio.new
   end
 
+  def index
+    @user = User.find_by(id: params[:user_id])
+    @portfolios = @user.portfolios
+    render json: @portfolios
+  end
+
   def create
     @user = User.find_by(id: params[:user_id])
     @portfolio = @user.portfolios.build(portfolio_params)

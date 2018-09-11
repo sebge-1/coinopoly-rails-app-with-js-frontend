@@ -36,6 +36,8 @@ gem 'rails_admin', '~> 1.3'
 gem 'public_activity'
 gem 'active_model_serializers'
 gem 'jquery-rails'
+gem 'handlebars_assets'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development

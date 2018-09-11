@@ -5,5 +5,13 @@
 <% end %>
 
 <script>
-  // index action goes here
+$(function () {
+  $("#show-more").on("click", function() {
+    let userId = parseInt($("#show-more").attr("data-id"));
+    console.log(userId)
+    $.getJSON("/users/" + userId + "/portfolios", function(data) {
+      console.log(data)
+    }); return false;
+  })
+})
 </script>

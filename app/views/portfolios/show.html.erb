@@ -55,7 +55,6 @@ $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.getJSON("/portfolios/" + nextId, function(data) {
-      console.log(data)
       $(".name").text(data["name"]);
       // $(".value") - this will need a JS method
       // re-set the id to current on the link
@@ -89,8 +88,9 @@ $(function () {
      var portfolioId = parseInt($("#position-form").attr("data-id"));
      var posting = $.post('/portfolios/' + portfolioId + "/positions", values);
      posting.done(function(data) {
-       $("#name").text(data["coin_id"]);
+       $("#name").text(data["coin"]["name"]);
        $("#quantity").text(data["quantity"]);
+       $("img").attr("src", data["coin"]["img_url"]);
      });
    });
  });
