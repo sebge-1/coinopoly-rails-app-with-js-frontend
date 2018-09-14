@@ -37,6 +37,7 @@ gem 'public_activity'
 gem 'active_model_serializers'
 gem 'jquery-rails'
 gem 'handlebars_assets'
+gem 'rufus-scheduler', '~> 3.2'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

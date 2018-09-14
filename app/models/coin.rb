@@ -2,8 +2,16 @@ class Coin < ApplicationRecord
   has_many :positions, dependent: :destroy
 
   validates :name, presence: true
-  after_create :set_img_url, :set_ticker
+  after_create :set_img_url, :set_ticker, :set_value
 
+
+  require 'rufus-scheduler'
+  scheduler = Rufus::Scheduler.new
+  scheduler.every '300s' do
+    Coin.all.each do |coin|
+      coin.set_value
+    end
+  end
 
   def slugify_name
     self.name.downcase.gsub(' ', '-')
@@ -21,10 +29,10 @@ class Coin < ApplicationRecord
     self.update({ticker: ticker.delete('()')})
   end
 
-  def value
+  def set_value
     doc = Nokogiri::HTML(open("https://coinmarketcap.com/currencies/#{self.slugify_name}", :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
     value = doc.css('#quote_price > span.h2.text-semi-bold.details-panel-item--price__value').text
-    return value.to_f
+    self.update(value: value.to_f)
   end
 
   def number_of_users

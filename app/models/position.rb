@@ -5,9 +5,19 @@ class Position < ApplicationRecord
   belongs_to :coin
   belongs_to :portfolio
   validates :quantity, presence: true, numericality: {greater_than: 0}
+  after_create :set_value
 
-  def value
-    self.coin.value * self.quantity
+  require 'rufus-scheduler'
+  scheduler = Rufus::Scheduler.new
+  scheduler.every '300s' do
+    Position.all.each do |position|
+      position.set_value
+    end
+  end
+
+  def set_value
+    value = self.coin.value * self.quantity
+    self.update(value: value)
   end
 
   def coin_name
