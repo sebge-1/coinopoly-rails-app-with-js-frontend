@@ -4,23 +4,13 @@ class CoinsController < ApplicationController
     @coins = Coin.all
   end
 
-  def create
-    @coin = Coin.new(coin_params)
-    @coin.set_img_url && @coin.set_ticker
-    if @coin.save
-      redirect_to coin_path(@coin)
-    else
-      redirect_to 'admin'
-    end
-  end
-
   def show
     @coin = Coin.find(params[:id])
   end
 
   private
   def coin_params
-    params.require(:coin).permit(:name, :ticker)
+    params.require(:coin).permit(:name, :ticker, :img_url)
   end
 
 end

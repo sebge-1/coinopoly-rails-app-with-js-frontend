@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   get 'users/:id/follower_feed' => 'activities#follower_feed'
   get 'activities/index'
 
-  post   '/signin',   to: 'sessions#create'
-  post "/admin/coin/new", to: 'coins#create'
-
+  post '/signin', to: 'sessions#create'
+  
   resources :coins
   resources :relationships, only: [:create, :destroy]
 
@@ -20,7 +19,7 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  
+
   resources :portfolios do
     resources :positions
   end
