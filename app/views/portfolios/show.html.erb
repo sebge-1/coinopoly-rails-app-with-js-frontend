@@ -1,6 +1,6 @@
 <div class="jumbotron text-center">
   <h1 class="display-4 name"><%= @portfolio.name %></h1>
-  <p class="lead value">Total value: $<%= @portfolio.value %></p>
+  <p class="lead">Total value: $<span id="value"><%= @portfolio.value %></span></p>
   <% if current_user == @user %>
     <div class="text-right">
       <%= link_to image_tag("https://png.icons8.com/material-sharp/50/000000/pencil.png", height: "15", width: "15"), edit_user_portfolio_path(@user, @portfolio) %>
@@ -17,7 +17,7 @@
 
 <% if current_user == @user %>
   <div class="text-center">
-    <%= form_for [@portfolio, @position], html: {id: "position-form", :"data-id"=> @portfolio.id} do |f| %>
+    <%= form_for [@portfolio, @position], html: {"data-id"=> @portfolio.id} do |f| %>
       <div class="form-group">
         <label for="coin">Coin:</label>
         <%= f.collection_select :coin_id, Coin.all, :id, :name, {}, {:class=>"form-control"} %><br>
@@ -26,7 +26,6 @@
         <label for="quantity">Quantity:</label><br>
         <%= f.number_field :quantity, placeholder: @position.errors.full_messages_for(:quantity).first, step: :any, class:"form-control" %><br>
       </div>
-       <%= f.hidden_field :portfolio_id, value: @portfolio.id %>
       <%= f.submit position_form_action, class: "btn btn-lg btn-secondary" %>
     <% end %>
   </div>
@@ -36,29 +35,71 @@
 
 <a href="#" class="js-next float-right btn btn-secondary" data-id="<%=@portfolio.id%>">Next portfolio</a>
 
-<script type="text/javascript" charset="utf-8">
+<script id="positions-template-owner" type="text/x-handlebars-template">
+    {{#each this}}
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title">{{coin.name}}</h1>
+    </div>
+    <div class="card-body">
+      <p>Quantity: {{quantity}}</p>
+      <p>Value: $ {{value}} </p>
+      <div class="text-right">
+        <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
+          <img src="https://png.icons8.com/material-sharp/50/000000/pencil.png", height="15" width="15" href="#">
+        </a>
+        <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" method="post">
+          <input name="utf8" type="hidden" value="✓">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
+          <input type="image" src="https://png.icons8.com/metro/50/000000/trash.png" height="15" width="15">
+        </form>
+      </div>
+    </div>
+    <div class="card-footer">
+      <img src={{coin.img_url}}>
+    </div>
+  </div>
+  {{/each}}
+</script>
+
+<script id="position-template-owner" type="text/x-handlebars-template">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title">{{coinName}}</h1>
+    </div>
+    <div class="card-body">
+      <p>Quantity: {{quantity}}</p>
+      <p>{{coinTicker}}</p>
+      <p>{{value}} </p>
+      <div class="text-right">
+        <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
+          <img src="https://png.icons8.com/material-sharp/50/000000/pencil.png", height="15" width="15" href="#">
+        </a>
+        <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" method="post">
+          <input name="utf8" type="hidden" value="✓">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
+          <input type="image" src="https://png.icons8.com/metro/50/000000/trash.png" height="15" width="15">
+        </form>
+      </div>
+    <div class="card-footer">
+      <img src={{coinImg_url}}>
+    </div>
+  </div>
+</script>
+
+<script>
 $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
     $.getJSON("/portfolios/" + nextId, function(data) {
       $(".name").text(data["name"]);
-      // $(".value") - this will need a JS method
-      // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]);
-    });return false;
-  });
-});
-</script>
 
-<script type="text/javascript" charset="utf-8">
-$(function () {
-  $(".js-back").on("click", function() {
-    var backId = parseInt($(".js-next").attr("data-id")) -1;
-    $.getJSON("/portfolios/" + backId, function(data) {
-      $(".name").text(data["name"]);
-      let positionsHTML = HandlebarsTemplates['positions_index']({ positions: data["positions"] })
-      $('.card-group').html(positionsHTML)
-      // $(".value") - this will need a JS method
+      let positions = data["positions"]
+      var template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
+      var result = template(positions);
+      $(".card-group").html(result);
       // re-set the id to current on the link
       $(".js-next").attr("data-id", data["id"]);
     });return false;
@@ -68,15 +109,83 @@ $(function () {
 
 <script>
 $(function () {
-   $('#position-form').on('submit', function(event) {
-     //prevent form from submitting the default way
-     var values = $(this).serialize();
-     var portfolioId = parseInt($("#position-form").attr("data-id"));
-     var posting = $.post('/portfolios/' + portfolioId + "/positions", values);
-     posting.done(function(data) {
-       let portfolioHTML = HandlebarsTemplates['position'](data)
-       $('.card-group').append(portfolioHTML)
-     });return false
+  $(".js-back").on("click", function() {
+    var backId = parseInt($(".js-next").attr("data-id")) -1;
+    $.getJSON("/portfolios/" + backId, function(data) {
+      $(".name").text(data["name"]);
+
+      let positions = data["positions"]
+      var template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
+      var result = template(positions);
+      $(".card-group").html(result);
+
+      // re-set the id to current on the link
+      $(".js-next").attr("data-id", data["id"]);
+    });return false;
+  });
+});
+</script>
+
+<script>
+  function buildUrl(ticker) {
+    return "https://min-api.cryptocompare.com/data/price?fsym=" + ticker + "&tsyms=USD"
+  }
+
+  function updatePortfolioValue(position) {
+    let portfolioValue = $("#value").html()
+    portfolioValue = parseFloat(portfolioValue) + position.value
+    $("#value").html(portfolioValue)
+  }
+
+  function setupTemplate(queryUrl, position) {
+    setValue(queryUrl, position).done(function(){
+      let positionHTML = position.renderTemplate();
+      $('.card-group').append(positionHTML)
+      updatePortfolioValue(position);
+    })
+  }
+
+  function setValue(queryUrl, position) {
+    return getValue(queryUrl, position).done(function(response) {
+      position.value = parseFloat(response["USD"]) * position.quantity
+    })
+  }
+
+  function getValue(query, object) {
+    return $.ajax({
+      url: query,
+      type: 'GET',
+      dataType: "json",
+    })
+  }
+
+  function Position(data) {
+    this.coinTicker = data.coin.ticker;
+    this.id = data.id;
+    this.quantity = data.quantity;
+    this.coinName = data.coin.name;
+    this.coinImg_url = data.coin.img_url;
+    this.queryUrl = buildUrl(this.coinTicker);
+  }
+
+  Position.prototype.renderTemplate = function() {
+    return Position.template(this)
+  }
+
+  $(function() {
+    Position.templateSource = $("#position-template-owner").html();
+    Position.template = Handlebars.compile(Position.templateSource)
+  })
+
+  $(function () {
+     $('form#new_position').on('submit', function(event) {
+       var values = $(this).serialize();
+       var portfolioId = parseInt($("form#new_position").attr("data-id"));
+       var posting = $.post('/portfolios/' + portfolioId + "/positions", values);
+       posting.done(function(data) {
+         let position = new Position(data)
+         setupTemplate(position.queryUrl, position)
+       });return false
+     })
    })
- });
 </script>
