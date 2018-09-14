@@ -101,6 +101,7 @@ $(function () {
       var result = template(positions);
       $(".card-group").html(result);
       // re-set the id to current on the link
+      $(".js-back").attr("data-id", data["id"]);
       $(".js-next").attr("data-id", data["id"]);
     });return false;
   });
@@ -110,7 +111,7 @@ $(function () {
 <script>
 $(function () {
   $(".js-back").on("click", function() {
-    var backId = parseInt($(".js-next").attr("data-id")) -1;
+    var backId = parseInt($(".js-back").attr("data-id")) -1;
     $.getJSON("/portfolios/" + backId, function(data) {
       $(".name").text(data["name"]);
 
@@ -118,8 +119,8 @@ $(function () {
       var template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
       var result = template(positions);
       $(".card-group").html(result);
-
       // re-set the id to current on the link
+      $(".js-back").attr("data-id", data["id"]);
       $(".js-next").attr("data-id", data["id"]);
     });return false;
   });
