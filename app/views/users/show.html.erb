@@ -9,9 +9,51 @@ $(function () {
   $("#show-more").on("click", function() {
     let userId = parseInt($("#show-more").attr("data-id"));
     $.getJSON("/users/" + userId + "/portfolios", function(data) {
-      let portfolioHTML = HandlebarsTemplates['portfolios_index']({ portfolios: data })
-      $('.card-group').html(portfolioHTML)
+      let portfolios = [];
+      for (let i = 0; i < data.length; i++) {
+        let portfolio = new Portfolio(data[i])
+        portfolio.setupTemplate()
+      }
     }); return false
   });
 })
+</script>
+
+<script>
+  function Portfolio(data) {
+    console.log(data.user.id)
+    this.id = data.id
+    this.name = data.name;
+    this.public = data.public;
+    this.positions = data.positions;
+    this.value = data.value
+    this.userId = data.user.id
+  }
+</script>
+
+<script>
+$(function() {
+  Portfolio.templateSource = $("#portfolio-template-owner").html();
+  Portfolio.template = Handlebars.compile(Portfolio.templateSource)
+})
+
+Portfolio.prototype.renderTemplate = function() {
+  return Portfolio.template(this)
+}
+
+Portfolio.prototype.setupTemplate = function() {
+  let portofolioHTML = this.renderTemplate();
+  $('.card-group').append(portofolioHTML);
+  }
+</script>
+
+<script id="portfolio-template-owner" type="text/x-handlebars-template">
+  <div class="card">
+    <div class="card-header">
+      <h4><a href="/users/{{userId}}/portfolios/{{id}}">{{name}}</a></h4>
+    </div>
+    <div class="card-body">
+      <p>Current value: ${{value}}</p>
+    </div>
+  </div>
 </script>
