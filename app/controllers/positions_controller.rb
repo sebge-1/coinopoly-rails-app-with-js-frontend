@@ -41,6 +41,7 @@ class PositionsController < ApplicationController
   def destroy
     @portfolio = Portfolio.find_by(id: params[:portfolio_id])
     @portfolio.positions.delete(Position.find(params[:id]))
+    @portfolio.set_value
     redirect_to user_portfolio_path(@portfolio.user, @portfolio)
   end
 
