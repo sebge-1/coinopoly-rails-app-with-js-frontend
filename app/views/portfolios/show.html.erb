@@ -1,6 +1,6 @@
 <div class="jumbotron text-center">
-  <h1 class="display-4 name"><%= @portfolio.name %></h1>
-  <p class="lead">Total value: $<span id="value"><%= @portfolio.value %></span></p>
+  <h1 class="display-4" id="name"><%= @portfolio.name %></h1>
+  <p class="lead">Total value: $<span id="portfolioValue"><%= @portfolio.value %></span></p>
   <% if current_user == @user %>
     <div class="text-right">
       <%= link_to image_tag("https://png.icons8.com/material-sharp/50/000000/pencil.png", height: "15", width: "15"), edit_user_portfolio_path(@user, @portfolio) %>
@@ -10,6 +10,7 @@
     </div>
   <% end %>
 </div>
+
 
 <div class='card-group'>
   <%= render @positions %>
@@ -33,7 +34,7 @@
 
 <a href="#" class="js-back float-left btn btn-secondary" data-id="<%=@portfolio.id%>">Previous portfolio</a>
 
-<a href="#" class="js-next float-right btn btn-secondary" data-id="<%=@portfolio.id%>">Next portfolio</a>
+<a href="#" class="js-next float-right btn btn-secondary" data-id="<%=@portfolio.id%>" >Next portfolio</a>
 
 <script id="positions-template-owner" type="text/x-handlebars-template">
     {{#each this}}
@@ -93,12 +94,11 @@
 $(function () {
   $(".js-next").on("click", function() {
     var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.getJSON("/portfolios/" + nextId, function(data) {
-      $(".name").text(data["name"]);
-
-      let positions = data["positions"]
-      var template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
-      var result = template(positions);
+    $.getJSON("/users/<%= @user.id %>/portfolios/" + nextId, function(data) {
+      let portfolio = new Portfolio(data);
+      portfolio.injectNameValue(this)
+      let template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
+      let result = template(portfolio.positions);
       $(".card-group").html(result);
       // re-set the id to current on the link
       $(".js-back").attr("data-id", data["id"]);
@@ -111,13 +111,12 @@ $(function () {
 <script>
 $(function () {
   $(".js-back").on("click", function() {
-    var backId = parseInt($(".js-back").attr("data-id")) -1;
-    $.getJSON("/portfolios/" + backId, function(data) {
-      $(".name").text(data["name"]);
-
-      let positions = data["positions"]
-      var template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
-      var result = template(positions);
+    let backId = parseInt($(".js-back").attr("data-id")) -1;
+    $.getJSON("/users/<%= @user.id %>/portfolios/" + backId, function(data) {
+      let portfolio = new Portfolio(data);
+      portfolio.injectNameValue(this)
+      let template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
+      let result = template(portfolio.positions);
       $(".card-group").html(result);
       // re-set the id to current on the link
       $(".js-back").attr("data-id", data["id"]);
@@ -128,45 +127,40 @@ $(function () {
 </script>
 
 <script>
-  function buildUrl(ticker) {
-    return "https://min-api.cryptocompare.com/data/price?fsym=" + ticker + "&tsyms=USD"
+  function Portfolio(data) {
+    this.name = data.name;
+    this.public = data.public;
+    this.positions = data.positions;
+    this.value = data.value
   }
-
-  function updatePortfolioValue(position) {
-    let portfolioValue = $("#value").html()
-    portfolioValue = parseFloat(portfolioValue) + position.value
-    $("#value").html(portfolioValue)
+</script>
+<script>
+  Portfolio.prototype.injectNameValue = function() {
+    $("#name").text(this.name);
+    $("#portfolioValue").text(this.value);
   }
+</script>
 
-  function setupTemplate(queryUrl, position) {
-    setValue(queryUrl, position).done(function(){
-      let positionHTML = position.renderTemplate();
-      $('.card-group').append(positionHTML)
-      updatePortfolioValue(position);
-    })
-  }
-
-  function setValue(queryUrl, position) {
-    return getValue(queryUrl, position).done(function(response) {
-      position.value = parseFloat(response["USD"]) * position.quantity
-    })
-  }
-
-  function getValue(query, object) {
-    return $.ajax({
-      url: query,
-      type: 'GET',
-      dataType: "json",
-    })
-  }
-
+<script>
+// should this be delegated to portfolio ultimately?
   function Position(data) {
-    this.coinTicker = data.coin.ticker;
     this.id = data.id;
     this.quantity = data.quantity;
     this.coinName = data.coin.name;
     this.coinImg_url = data.coin.img_url;
-    this.queryUrl = buildUrl(this.coinTicker);
+    this.value = parseFloat(data.coin.value) * this.quantity
+  }
+
+  Position.prototype.updatePortfolioValue = function() {
+    let portfolioValue = $("span#portfolioValue").html()
+    portfolioValue = parseFloat(portfolioValue) + this.value
+    $("span#portfolioValue").html(portfolioValue)
+  }
+
+  Position.prototype.setupTemplate = function() {
+    let positionHTML = this.renderTemplate();
+    $('.card-group').append(positionHTML);
+    this.updatePortfolioValue();
   }
 
   Position.prototype.renderTemplate = function() {
@@ -185,7 +179,7 @@ $(function () {
        var posting = $.post('/portfolios/' + portfolioId + "/positions", values);
        posting.done(function(data) {
          let position = new Position(data)
-         setupTemplate(position.queryUrl, position)
+         position.setupTemplate()
        });return false
      })
    })
