@@ -32,9 +32,17 @@
   </div>
 <% end %>
 
-<a href="#" class="js-back float-left btn btn-secondary" data-id="<%=@portfolio.id%>">Previous portfolio</a>
+<div id="back-button" data-id="<%=@portfolio.id%>">
+  <% if @user.portfolios.map{|portfolio| portfolio.id}.include?(@portfolio.id - 1) %>
+    <a href="#" class="js-back float-left btn btn-secondary">Previous Portfolio</a>
+  <% end %>
+</div>
 
-<a href="#" class="js-next float-right btn btn-secondary" data-id="<%=@portfolio.id%>" >Next portfolio</a>
+<div id="next-button" data-id="<%=@portfolio.id%>">
+  <% if @user.portfolios.map{|portfolio| portfolio.id}.include?(@portfolio.id + 1) %>
+    <a href="#" class="js-next float-right btn btn-secondary">Next Portfolio</a>
+  <% end %>
+</div>
 
 <script id="positions-template-owner" type="text/x-handlebars-template">
     {{#each this}}
@@ -90,40 +98,76 @@
   </div>
 </script>
 
+<!-- set content of button elements depending on data id: none if id-1 or id +1 exceeds user's range -->
 <script>
-$(function () {
-  $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
-    $.getJSON("/users/<%= @user.id %>/portfolios/" + nextId, function(data) {
-      let portfolio = new Portfolio(data);
-      portfolio.injectNameValue(this)
-      let template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
-      let result = template(portfolio.positions);
-      $(".card-group").html(result);
-      // re-set the id to current on the link
-      $(".js-back").attr("data-id", data["id"]);
-      $(".js-next").attr("data-id", data["id"]);
-    });return false;
-  });
-});
+  function setButtons() {
+    $.getJSON("/users/<%= @user.id %>/portfolios/", function(data) {
+      let ids = data.map(portfolio => portfolio.id)
+      let nextID = parseInt($("#next-button").attr("data-id")) + 1;
+      let backID = parseInt($("#back-button").attr("data-id")) - 1;
+      if (ids.includes(nextID)) {
+        $("#next-button").html("<a href='#' class='js-next float-right btn btn-secondary'>Next portfolio</a>")
+      }
+      else {
+          $("#next-button").html("")
+      }
+      if (ids.includes(backID)) {
+        $("#back-button").html("<a href='#' class='js-back float-left btn btn-secondary'>Previous Portfolio</a>")
+      }
+      else {
+        $("#back-button").html("")
+      }
+    }).then(nextButton).then(backButton)
+  }
 </script>
 
 <script>
-$(function () {
-  $(".js-back").on("click", function() {
-    let backId = parseInt($(".js-back").attr("data-id")) -1;
-    $.getJSON("/users/<%= @user.id %>/portfolios/" + backId, function(data) {
-      let portfolio = new Portfolio(data);
-      portfolio.injectNameValue(this)
-      let template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
-      let result = template(portfolio.positions);
-      $(".card-group").html(result);
-      // re-set the id to current on the link
-      $(".js-back").attr("data-id", data["id"]);
-      $(".js-next").attr("data-id", data["id"]);
-    });return false;
-  });
-});
+  function nextButton () {
+    $(".js-next").on("click", function(e) {
+      e.preventDefault()
+      var nextId = parseInt($("#next-button").attr("data-id")) + 1;
+
+      $.getJSON("/users/<%= @user.id %>/portfolios/" + nextId, function(data) {
+        $("#back-button").attr("data-id", data["id"]);
+        $("#next-button").attr("data-id", data["id"]);
+
+        let portfolio = new Portfolio(data);
+        portfolio.injectNameValue(this)
+        let template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
+        let result = template(portfolio.positions);
+        $(".card-group").html(result);
+        // re-set the id to current on the link
+      }).then(setButtons)
+    })
+  }
+</script>
+
+<script>
+  function backButton() {
+    $(".js-back").on("click", function(e) {
+      e.preventDefault()
+      let backId = parseInt($("#back-button").attr("data-id")) -1;
+      $.getJSON("/users/<%= @user.id %>/portfolios/" + backId, function(data) {
+        $("#back-button").attr("data-id", data["id"]);
+        $("#next-button").attr("data-id", data["id"]);
+
+        let portfolio = new Portfolio(data);
+        portfolio.injectNameValue(this)
+        let template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
+        let result = template(portfolio.positions);
+        $(".card-group").html(result);
+        // re-set the id to current on the link
+      }).then(setButtons)
+    });
+  };
+</script>
+
+<script>
+$(function() {
+  setButtons();
+  nextButton();
+  backButton();
+ })
 </script>
 
 <script>
