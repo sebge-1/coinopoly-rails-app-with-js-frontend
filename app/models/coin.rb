@@ -1,4 +1,7 @@
 class Coin < ApplicationRecord
+  require 'net/http'
+  require 'json'
+
   has_many :positions, dependent: :destroy
 
   validates :name, presence: true
@@ -30,9 +33,11 @@ class Coin < ApplicationRecord
   end
 
   def set_value
-    doc = Nokogiri::HTML(open("https://coinmarketcap.com/currencies/#{self.slugify_name}", :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
-    value = doc.css('#quote_price > span.h2.text-semi-bold.details-panel-item--price__value').text
-    self.update(value: value.to_f)
+    url = "https://min-api.cryptocompare.com/data/price?fsym=#{self.ticker}&tsyms=USD"
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    price = JSON.parse(response)['USD']
+    self.update({value: price})
   end
 
   def number_of_users
