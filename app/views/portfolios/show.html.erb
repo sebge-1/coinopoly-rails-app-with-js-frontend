@@ -11,7 +11,6 @@
   <% end %>
 </div>
 
-
 <div class='card-group'>
   <%= render @positions %>
 </div>
@@ -43,61 +42,6 @@
     <a href="#" class="js-next float-right btn btn-secondary">Next Portfolio</a>
   <% end %>
 </div>
-
-<script id="positions-template-owner" type="text/x-handlebars-template">
-    {{#each this}}
-  <div class="card">
-    <div class="card-header">
-      <h1 class="card-title">{{coin.name}}</h1>
-    </div>
-    <div class="card-body">
-      <p>Quantity: {{quantity}}</p>
-      <p>Value: $ {{value}} </p>
-      <div class="text-right">
-        <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
-          <img src="/assets/icons8-edit-32.png", height="15" width="15" href="#">
-        </a>
-        <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" method="post">
-          <input name="utf8" type="hidden" value="✓">
-          <input type="hidden" name="_method" value="delete">
-          <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
-          <input type="image" src="/assets/icons8-trash-32.png" height="15" width="15">
-        </form>
-      </div>
-    </div>
-    <div class="card-footer">
-      <img src={{coin.img_url}}>
-    </div>
-  </div>
-  {{/each}}
-</script>
-
-<script id="position-template-owner" type="text/x-handlebars-template">
-  <div class="card">
-    <div class="card-header">
-      <h1 class="card-title">{{coinName}}</h1>
-    </div>
-    <div class="card-body">
-      <p>Quantity: {{quantity}}</p>
-      <p>{{coinTicker}}</p>
-      <p>{{value}} </p>
-      <div class="text-right">
-        <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
-          <img src="/assets/icons8-edit-32.png", height="15" width="15" href="#">
-        </a>
-        <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" method="post">
-          <input name="utf8" type="hidden" value="✓">
-          <input type="hidden" name="_method" value="delete">
-          <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
-          <input type="image" src="/assets/icons8-trash-32.png" height="15" width="15">
-        </form>
-      </div>
-    <div class="card-footer">
-      <img src={{coinImg_url}}>
-    </div>
-  </div>
-</script>
-
 <!-- set content of button elements depending on data id: none if id-1 or id +1 exceeds user's range -->
 <script>
   function setButtons() {
@@ -122,20 +66,38 @@
 </script>
 
 <script>
+  function updateDataAttributes(id) {
+    $("#back-button").attr("data-id", id);
+    $("#next-button").attr("data-id", id);
+    $("#new_position").attr("data-id", id);
+  }
+</script>
+
+<script>
+  function findTemplate() {
+    let current_user = '<%= current_user.id %>'
+    let portfolioOwner = '<%= @user.id %>'
+    let template;
+    if (current_user == portfolioOwner) {
+      template = 'positions-owner'
+    } else {
+      template = 'positions-guest'
+    }
+    return template
+  }
+</script>
+
+<script>
   function nextButton () {
     $(".js-next").on("click", function(e) {
       e.preventDefault()
       var nextId = parseInt($("#next-button").attr("data-id")) + 1;
 
       $.getJSON("/users/<%= @user.id %>/portfolios/" + nextId, function(data) {
-        $("#back-button").attr("data-id", data["id"]);
-        $("#next-button").attr("data-id", data["id"]);
-
+        updateDataAttributes(data["id"])
         let portfolio = new Portfolio(data);
         portfolio.injectNameValue(this)
-        let template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
-        let result = template(portfolio.positions);
-        $(".card-group").html(result);
+        portfolio.renderPositions(findTemplate());
       }).then(setButtons)
     })
   }
@@ -147,14 +109,11 @@
       e.preventDefault()
       let backId = parseInt($("#back-button").attr("data-id")) -1;
       $.getJSON("/users/<%= @user.id %>/portfolios/" + backId, function(data) {
-        $("#back-button").attr("data-id", data["id"]);
-        $("#next-button").attr("data-id", data["id"]);
+        updateDataAttributes(data["id"])
 
         let portfolio = new Portfolio(data);
         portfolio.injectNameValue(this)
-        let template = Handlebars.compile(document.getElementById("positions-template-owner").innerHTML);
-        let result = template(portfolio.positions);
-        $(".card-group").html(result);
+        portfolio.renderPositions(findTemplate());
       }).then(setButtons)
     });
   };
@@ -171,15 +130,32 @@ $(function() {
 <script>
   $(function () {
      $('form#new_position').on('submit', function(event) {
-       var values = $(this).serialize();
-       var portfolioId = parseInt($("form#new_position").attr("data-id"));
-       var posting = $.post('/portfolios/' + portfolioId + "/positions", values);
-       posting.done(function(data) {
-         let position = new Position(data)
-         position.setupTemplate()
+       let values = $(this).serialize();
+       let portfolioId = parseInt($("form#new_position").attr("data-id"));
+      $.ajax({
+        type: "post",
+          url: '/portfolios/' + portfolioId + '/positions',
+          data: values,
+          success: function(data) {
+            let position = new Position(data);
+            let priceData = $("span#portfolioValue").html();
+            let portfolio = new Portfolio({"value": priceData})
+            console.log(portfolio)
+            portfolio.updatePortfolioValue(position.value)
+            position.renderTemplate();
+          }
        });return false
      })
    })
+</script>
+
+<script>
+    $("#new_position").validate({
+      debug: true,
+      rules: {
+        "position[quantity]": {required: true, min: 0.01, number: true}
+      }
+    });
 </script>
 
 <% content_for :portfolios do %>
