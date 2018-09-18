@@ -11,11 +11,17 @@ Portfolio.prototype.injectNameValue = function() {
   $("#portfolioValue").text(this.value);
 }
 
-Portfolio.prototype.renderTemplate = function() {
-  return Portfolio.template(this)
+Portfolio.prototype.updatePortfolioValue = function(positionValue) {
+  let portfolioValue = parseFloat(this.value) + positionValue
+  $("span#portfolioValue").html(portfolioValue)
 }
 
-Portfolio.prototype.setupTemplate = function() {
-  let portofolioHTML = this.renderTemplate();
-  $('.card-group').append(portofolioHTML);
+Portfolio.prototype.renderTemplate = function() {
+  let portfolioHTML = HandlebarsTemplates['portfolio_template'](this)
+  $('.card-group').append(portfolioHTML);
+}
+
+Portfolio.prototype.renderPositions = function(templateSource) {
+  let result = HandlebarsTemplates[templateSource]({positions: this.positions})
+  $(".card-group").html(result)
 }
