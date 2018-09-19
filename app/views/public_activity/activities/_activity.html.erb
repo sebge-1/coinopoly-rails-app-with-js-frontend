@@ -1,12 +1,5 @@
-<% if displayable?(activity) %>
+<% if displayable?(activity) && activity.owner %>
   [<%= activity.created_at.localtime.strftime('%H:%M:%S %-d %B %Y')
-  %>]
-    <% if activity.owner %>
-      <%= link_to activity.owner.name, activity.owner %>
-    <% else %>
-      A user who since left Coinopoly
-    <% end %>
-
-    <%= render_activity activity %>
+  %>]<%= link_to activity.owner.name, activity.owner %><%= render_activity activity %>
   <hr>
 <% end %>
