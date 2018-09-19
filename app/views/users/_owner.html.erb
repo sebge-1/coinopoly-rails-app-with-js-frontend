@@ -26,7 +26,7 @@
     <% if @portfolios.blank? %>
       <%= link_to 'Create your first portfolio', new_user_portfolio_path(user) %>
     <% else %>
-      <a href="#" id="show-more" class="btn btn-secondary" data-id="<%=@user.id%>">Show portfolios</a>
+      <a href="#" id="show-more" class="btn btn-secondary">Show portfolios</a>
       <div class ="card-group">
       </div>
       <div id="add" class="mt-5">
