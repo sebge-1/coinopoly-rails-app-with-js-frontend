@@ -16,9 +16,9 @@ Portfolio.prototype.updatePortfolioValue = function(positionValue) {
   $("span#portfolioValue").html(portfolioValue)
 }
 
-Portfolio.prototype.renderTemplate = function() {
+Portfolio.prototype.createTemplate = function() {
   let portfolioHTML = HandlebarsTemplates['portfolio_template'](this)
-  $('.card-group').append(portfolioHTML);
+  return portfolioHTML
 }
 
 Portfolio.prototype.renderPositions = function(templateSource) {
