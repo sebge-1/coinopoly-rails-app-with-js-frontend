@@ -4,8 +4,7 @@
   </div>
   <div class="card-body">
     <p>Quantity: {{quantity}}</p>
-    <p>{{coinTicker}}</p>
-    <p>{{value}}</p>
+    <p>Value: ${{value}}</p>
     <div class="text-right">
       <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
         <img src="/assets/icons8-edit-32.png", height="15" width="15" href="#">
@@ -13,10 +12,10 @@
       <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" method="post">
         <input name="utf8" type="hidden" value="✓">
         <input type="hidden" name="_method" value="delete">
-        <input type="hidden" name="authenticity_token" value=<%= form_authenticity_token %>>
         <input type="image" src="/assets/icons8-trash-32.png" height="15" width="15">
       </form>
     </div>
+  </div>
   <div class="card-footer">
     <img src={{coinImg_url}}>
   </div>
