@@ -10,13 +10,11 @@ class PositionsController < ApplicationController
   def create
     @portfolio = Portfolio.find_by(id: params[:portfolio_id])
     @position = @portfolio.positions.build(position_params)
-
-    if !@position.save
-      flash[:error] = 'Please enter a positive number.'
-    else
+    if @position.save
       @portfolio.positions << @position
+      @portfolio.set_value
+      render json: @position
     end
-   render json: @position, status: 200
   end
 
   def edit
@@ -30,7 +28,7 @@ class PositionsController < ApplicationController
     @position = @portfolio.positions.find_by(id: params[:id])
     @position.update(position_params)
     if @position.errors.any?
-      flash[:error] = "Please enter a positive number."
+      flash.now[:error] = "Please enter a positive number."
       @coins = Coin.all
       render 'new'
     else
