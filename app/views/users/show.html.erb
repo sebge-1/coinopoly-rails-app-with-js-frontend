@@ -7,9 +7,7 @@
 <script>
 $(function () {
   $("#show-more").on("click", function() {
-    let userId = parseInt($("#show-more").attr("data-id"));
-    $.getJSON("/users/" + userId + "/portfolios", function(data) {
-      let portfolios = [];
+    $.getJSON("/users/<%=@user.id%>/portfolios", function(data) {
       for (let i = 0; i < data.length; i++) {
         let portfolio = new Portfolio(data[i])
         portfolio.userID = data[i].user.id
