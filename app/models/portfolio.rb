@@ -12,7 +12,7 @@ class Portfolio < ApplicationRecord
 
   require 'rufus-scheduler'
   scheduler = Rufus::Scheduler.new
-  scheduler.every '300s' do
+  scheduler.every '1800s' do
     Portfolio.all.each do |portfolio|
       portfolio.set_value
     end

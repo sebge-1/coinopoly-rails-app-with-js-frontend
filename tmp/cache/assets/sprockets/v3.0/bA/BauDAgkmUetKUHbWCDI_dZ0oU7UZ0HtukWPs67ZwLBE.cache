@@ -1,0 +1,17 @@
+{:uriI"òfile://app/assets/javascripts/templates/position.hbs?type=text/x-handlebars-template&id=c76e4035502e5375b1eb5bf4a72498c434f17745b4396a68388d677764653654:ET:load_pathI"app/assets/javascripts;T:filenameI"2app/assets/javascripts/templates/position.hbs;T:	nameI"templates/position;T:logical_pathI" templates/position.hamlbars;T:content_typeI"text/x-handlebars-template;T:sourceI")<div class="card" id="new">
+  <div class="card-header">
+    <h1 class="card-title" id="name">{{coin.name}}</h1>
+  </div>
+  <div class="card-body">
+    <p id="quantity">{{quantity}}</p>
+    <p id="value">empty</p>
+  </div>
+  <div class="card-footer">
+    <img src={{coin.img_url}}>
+  </div>
+</div>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Tprocessors:type=text/x-handlebars-template&file_type=text/x-handlebars-template;TTI"@file-digest://app/assets/javascripts/templates/position.hbs;TTF:charsetI"
+utf-8;F:digest"%/Œπ©.M\‘xòo¡∑ﬁÂ»˙qOjánÖ¢¥ê:lengthi):dependencies_digest"%1fı¨++°ZP≤ë∏µfHé!áÿâ¯W.ﬂÿ®¥+´:idI"Ec76e4035502e5375b1eb5bf4a72498c434f17745b4396a68388d677764653654;F:
+mtimel+ Oò[

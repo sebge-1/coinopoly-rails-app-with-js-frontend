@@ -9,7 +9,7 @@ class Position < ApplicationRecord
 
   require 'rufus-scheduler'
   scheduler = Rufus::Scheduler.new
-  scheduler.every '300s' do
+  scheduler.every '1800s' do
     Position.all.each do |position|
       position.set_value
     end

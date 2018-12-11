@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery unless: -> { request.format.json? }
   include PublicActivity::StoreController
   def welcome
     @sign_up_user = User.new

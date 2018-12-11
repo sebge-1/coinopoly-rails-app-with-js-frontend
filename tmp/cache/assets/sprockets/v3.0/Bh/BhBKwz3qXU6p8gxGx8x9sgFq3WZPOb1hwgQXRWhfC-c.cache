@@ -1,0 +1,17 @@
+{:uriI" file://app/assets/javascripts/templates/portfolios_index.hbs?type=text/x-handlebars-template&id=d47d3c4fb98c29717354c01ff61d4a09967262fc1bffc6e1d1925f67ee4433a0:ET:load_pathI"app/assets/javascripts;T:filenameI":app/assets/javascripts/templates/portfolios_index.hbs;T:	nameI"templates/portfolios_index;T:logical_pathI"(templates/portfolios_index.hamlbars;T:content_typeI"text/x-handlebars-template;T:sourceI"´
+<div class="card">
+  {{#each portfolios}}
+  <div class="card-header">
+    <h4>name</h4>
+  </div>
+  <div class="card-body">
+    <p>Current value: $</p>
+  </div>
+  {{/each}}
+</div>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Tprocessors:type=text/x-handlebars-template&file_type=text/x-handlebars-template;TTI"Hfile-digest://app/assets/javascripts/templates/portfolios_index.hbs;TTF:charsetI"
+utf-8;F:digest"%ê—¦«ƒoZ]¿i=že~"ÆR§"ÌÒ(!}KÆ–ª‰:lengthi´:dependencies_digest"%ZòTy+CpÙrW.J‚û¸+…WÅ,Œë">Pîp:idI"Ed47d3c4fb98c29717354c01ff61d4a09967262fc1bffc6e1d1925f67ee4433a0;F:
+mtimel+
+7˜[

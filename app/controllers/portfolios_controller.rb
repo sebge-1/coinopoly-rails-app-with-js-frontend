@@ -31,7 +31,7 @@ class PortfoliosController < ApplicationController
     @coins = Coin.all
     respond_to do |format|
       format.html
-      format.json { render json: @portfolio, include: ['positions','positions.coin', 'positions.coin.name', 'positions.coin.img_url'] }
+      format.json { render json: @portfolio, include: ['user', 'positions','positions.coin', 'positions.coin.name', 'positions.coin.img_url'] }
     end
   end
 

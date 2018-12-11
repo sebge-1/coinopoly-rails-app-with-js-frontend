@@ -20,6 +20,23 @@ $(function () {
 })
 </script>
 
+<script>
+  $(function () {
+    $("#by-value").on("click", function() {
+      $.getJSON("/users/<%=@user.id%>/portfolios", function(data) {
+      let inOrder = data.sort(function(a,b) {return  b.value - a.value})
+      let portfoliosHTML = "";
+        for (let i = 0; i < inOrder.length; i++) {
+          let portfolio = new Portfolio(inOrder[i])
+          portfolio.userID = inOrder[i].user.id
+          portfoliosHTML += portfolio.createTemplate()
+        }
+      $('.card-group').html(portfoliosHTML);
+    }); return false
+  })
+})
+</script>
+
 <% content_for :portfolios do %>
   <%= javascript_include_tag "portfolios.js" %>
 <% end %>

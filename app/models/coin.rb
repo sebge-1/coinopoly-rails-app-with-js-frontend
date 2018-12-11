@@ -10,7 +10,7 @@ class Coin < ApplicationRecord
 
   require 'rufus-scheduler'
   scheduler = Rufus::Scheduler.new
-  scheduler.every '300s' do
+  scheduler.every '600s' do
     Coin.all.each do |coin|
       coin.set_value
     end

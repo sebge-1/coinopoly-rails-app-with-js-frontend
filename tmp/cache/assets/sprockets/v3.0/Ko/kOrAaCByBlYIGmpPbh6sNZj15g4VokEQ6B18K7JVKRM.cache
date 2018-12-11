@@ -1,0 +1,75 @@
+{:uriI"Üfile://app/assets/javascripts/particles.json?type=application/json&id=4a88ae58758972e33e29ea5cc645d9e72f3ec8b8585c1d84ffa10544742ce774:ET:load_pathI"app/assets/javascripts;T:filenameI"*app/assets/javascripts/particles.json;T:	nameI"particles;T:logical_pathI"particles.json;T:content_typeI"application/json;T:sourceI"w{
+  "particles":{
+    "number":{
+      "value":400
+    },
+    "color":{
+      "value":"#fff"
+    },
+    "shape":{
+      "type":"circle",
+      "stroke":{
+        "width":1,
+        "color":"#ccc"
+      },
+      "image":{
+        "src":"http://www.iconsdb.com/icons/preview/white/contacts-xxl.png"
+      }
+    },
+    "opacity":{
+      "value":0.5,
+      "random":true,
+      "anim":{
+        "enable":false,
+        "speed":1
+      }
+    },
+    "size":{
+      "value": 5,
+      "random":false,
+      "anim":{
+        "enable": false,
+        "speed":30
+      }
+    },
+    "line_linked":{
+      "enable": true,
+      "distance": 120,
+      "color":"#fff",
+      "width":1
+    },
+    "move":{
+      "enable":true,
+      "speed":2,
+      "direction":"none",
+      "straight":false
+    }
+  },
+  "interactivity":{
+    "events":{
+      "onhover":{
+        "enable":true,
+        "mode":"repulse"
+      },
+      "onclick":{
+        "enable": true,
+        "mode":"push"
+      }
+    },
+    "modes":{
+      "repulse":{
+        "distance":50,
+        "duration":0.4
+      },
+      "bubble":{
+        "distance":100,
+        "size":10
+      }
+    }
+  }
+}
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"@processors:type=application/json&file_type=application/json;TTI"8file-digest://app/assets/javascripts/particles.json;TTF:charsetI"
+utf-8;F:digest"%wÕ€≈É^ﬂ3ŸúÃ◊^≤ÂÂz^u°€ê«yl∏ÜN:lengthiw:dependencies_digest"%¢Á9IyØ˚VÏ2mnπ:82‘ü¡ﬂÈU'‘∂;i=W:idI"E4a88ae58758972e33e29ea5cc645d9e72f3ec8b8585c1d84ffa10544742ce774;F:
+mtimel+á»í[
