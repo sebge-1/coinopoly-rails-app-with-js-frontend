@@ -7,6 +7,6 @@ function Position(data) {
 }
 
 Position.prototype.renderTemplate = function() {
-  let positionHTML = HandlebarsTemplates['new_position']( this)
+  var positionHTML = HandlebarsTemplates['new_position']( this)
   $('.card-group').append(positionHTML)
   }

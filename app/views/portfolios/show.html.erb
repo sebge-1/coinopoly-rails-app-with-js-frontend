@@ -46,9 +46,9 @@
 <script>
   function setButtons() {
     $.getJSON("/users/<%= @user.id %>/portfolios/", function(data) {
-      let ids = data.map(portfolio => portfolio.id)
-      let nextID = parseInt($("#next-button").attr("data-id")) + 1;
-      let backID = parseInt($("#back-button").attr("data-id")) - 1;
+      var ids = data.map(portfolio => portfolio.id)
+      var nextID = parseInt($("#next-button").attr("data-id")) + 1;
+      var backID = parseInt($("#back-button").attr("data-id")) - 1;
       if (ids.includes(nextID)) {
         $("#next-button").html("<a href='#' class='js-next float-right btn btn-secondary'>Next portfolio</a>")
       }
@@ -75,9 +75,9 @@
 
 <script>
   function findTemplate() {
-    let current_user = '<%= current_user.id %>'
-    let portfolioOwner = '<%= @user.id %>'
-    let template;
+    var current_user = '<%= current_user.id %>'
+    var portfolioOwner = '<%= @user.id %>'
+    var template;
     if (current_user == portfolioOwner) {
       template = 'positions-owner'
     } else {
@@ -91,11 +91,11 @@
   function nextButton () {
     $(".js-next").on("click", function(e) {
       e.preventDefault()
-      let nextId = parseInt($("#next-button").attr("data-id")) + 1;
+      var nextId = parseInt($("#next-button").attr("data-id")) + 1;
 
       $.getJSON("/users/<%= @user.id %>/portfolios/" + nextId, function(data) {
         updateDataAttributes(data["id"])
-        let portfolio = new Portfolio(data);
+        var portfolio = new Portfolio(data);
         portfolio.injectNameValue(this)
         portfolio.renderPositions(findTemplate());
       }).then(setButtons)
@@ -107,11 +107,11 @@
   function backButton() {
     $(".js-back").on("click", function(e) {
       e.preventDefault()
-      let backId = parseInt($("#back-button").attr("data-id")) -1;
+      var backId = parseInt($("#back-button").attr("data-id")) -1;
       $.getJSON("/users/<%= @user.id %>/portfolios/" + backId, function(data) {
         updateDataAttributes(data["id"])
 
-        let portfolio = new Portfolio(data);
+        var portfolio = new Portfolio(data);
         portfolio.injectNameValue(this)
         portfolio.renderPositions(findTemplate());
       }).then(setButtons)
@@ -130,16 +130,16 @@ $(function() {
 <script>
   $(function () {
      $('form#new_position').on('submit', function(event) {
-       let values = $(this).serialize();
-       let portfolioId = parseInt($("form#new_position").attr("data-id"));
+       var values = $(this).serialize();
+       var portfolioId = parseInt($("form#new_position").attr("data-id"));
       $.ajax({
         type: "post",
           url: '/portfolios/' + portfolioId + '/positions',
           data: values,
           success: function(data) {
-            let position = new Position(data);
-            let priceData = $("span#portfolioValue").html();
-            let portfolio = new Portfolio({"value": priceData})
+            var position = new Position(data);
+            var priceData = $("span#portfolioValue").html();
+            var portfolio = new Portfolio({"value": priceData})
             portfolio.updatePortfolioValue(position.value)
             position.renderTemplate();
           }

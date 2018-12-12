@@ -8,9 +8,9 @@
 $(function () {
   $("#show-more").on("click", function() {
     $.getJSON("/users/<%=@user.id%>/portfolios", function(data) {
-      let portfoliosHTML = "";
+      var portfoliosHTML = "";
         for (let i = 0; i < data.length; i++) {
-          let portfolio = new Portfolio(data[i])
+          var portfolio = new Portfolio(data[i])
           portfolio.userID = data[i].user.id
           portfoliosHTML += portfolio.createTemplate()
         }
@@ -24,10 +24,10 @@ $(function () {
   $(function () {
     $("#by-value").on("click", function() {
       $.getJSON("/users/<%=@user.id%>/portfolios", function(data) {
-      let inOrder = data.sort(function(a,b) {return  b.value - a.value})
-      let portfoliosHTML = "";
-        for (let i = 0; i < inOrder.length; i++) {
-          let portfolio = new Portfolio(inOrder[i])
+      var inOrder = data.sort(function(a,b) {return  b.value - a.value})
+      var portfoliosHTML = "";
+        for (var i = 0; i < inOrder.length; i++) {
+          var portfolio = new Portfolio(inOrder[i])
           portfolio.userID = inOrder[i].user.id
           portfoliosHTML += portfolio.createTemplate()
         }

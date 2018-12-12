@@ -12,16 +12,16 @@ Portfolio.prototype.injectNameValue = function() {
 }
 
 Portfolio.prototype.updatePortfolioValue = function(positionValue) {
-  let portfolioValue = parseFloat(this.value) + positionValue
+  var portfolioValue = parseFloat(this.value) + positionValue
   $("span#portfolioValue").html(portfolioValue)
 }
 
 Portfolio.prototype.createTemplate = function() {
-  let portfolioHTML = HandlebarsTemplates['portfolio_template'](this)
+  var portfolioHTML = HandlebarsTemplates['portfolio_template'](this)
   return portfolioHTML
 }
 
 Portfolio.prototype.renderPositions = function(templateSource) {
-  let result = HandlebarsTemplates[templateSource]({positions: this.positions})
+  var result = HandlebarsTemplates[templateSource]({positions: this.positions})
   $(".card-group").html(result)
 }
