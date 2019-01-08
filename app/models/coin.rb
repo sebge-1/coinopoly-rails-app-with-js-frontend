@@ -22,13 +22,13 @@ class Coin < ApplicationRecord
 
   def set_img_url
     doc = Nokogiri::HTML(open("https://coinmarketcap.com/currencies/#{self.slugify_name}/", :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
-    url = doc.css('body > div.container.main-section > div > div.col-lg-10.padding-top-1x > div.details-panel.flex-container.bottom-margin-2x > div.details-panel-item--header.flex-container > h1 > img').attr('src')
+    url = doc.css('body > div.container.main-section > div > div.col-xl-10.padding-top-1x > div.details-panel.flex-container.bottom-margin-2x > div.details-panel-item--header.flex-container > h1 > img').attr('src')
     self.update({img_url: url})
   end
 
   def set_ticker
-    doc = Nokogiri::HTML(open("https://coinmarketcap.com/currencies/#{self.slugify_name}", :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
-    ticker = doc.css('body > div.container.main-section > div > div.col-lg-10.padding-top-1x > div.details-panel.flex-container.bottom-margin-2x > div.details-panel-item--header.flex-container > h1 > span').inner_text
+    doc = Nokogiri::HTML(open("https://coinmarketcap.com/currencies/#{self.slugify_name}/", :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE))
+    ticker = doc.css('body > div.container.main-section > div > div.col-xl-10.padding-top-1x > div.details-panel.flex-container.bottom-margin-2x > div.details-panel-item--header.flex-container > h1 > span').inner_text
     self.update({ticker: ticker.delete('()')})
   end
 
