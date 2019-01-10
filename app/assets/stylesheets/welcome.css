@@ -1,8 +1,9 @@
 
 div#particles-js {
-  background: #2d405e;
+  background: rgba(45,64,94, 0.7);
   position: relative;
   height: 100vh;
+
 }
 
 div#login-options {
@@ -15,4 +16,6 @@ div#login-options {
   width: 400px;
   height: 400px;
   color: white;
+  opacity: 0.8;
+  background-color: #2d405e;
 }
