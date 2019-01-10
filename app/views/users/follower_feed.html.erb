@@ -1,5 +1,11 @@
 <% if @activites.nil? %>
-  <h4>Not much has happened yet. Click <%= link_to 'here', users_path %> to follow more people.<h4>
+<div class="alert alert-warning" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <h4>Your feed looks a little empty. Click <%= link_to 'here', users_path %> to follow more people.<h4>
+</div>
+
 <% else %>
   <%= render partial: 'public_activity/activities/activity', collection: @activities %>
 <% end %>
