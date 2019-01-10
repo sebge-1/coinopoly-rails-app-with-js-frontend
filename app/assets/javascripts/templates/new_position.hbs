@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" data-id={{id}}>
   <div class="card-header">
     <h1 class="card-title">{{coinName}}</h1>
   </div>
@@ -9,10 +9,11 @@
       <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
         <img src="/assets/icons8-edit-32.png", height="15" width="15" href="#">
       </a>
-      <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" method="post">
+      <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" accept-charset="UTF-8" method="post">
         <input name="utf8" type="hidden" value="✓">
         <input type="hidden" name="_method" value="delete">
         <input type="image" src="/assets/icons8-trash-32.png" height="15" width="15">
+        <input type="submit" value="" style="display: none;">
       </form>
     </div>
   </div>
