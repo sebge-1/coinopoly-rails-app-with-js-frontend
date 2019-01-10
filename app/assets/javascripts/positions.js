@@ -1,5 +1,6 @@
 function Position(data) {
   this.id = data.id;
+  this.portfolio_id = data.portfolio_id
   this.quantity = data.quantity;
   this.coinName = data.coin.name;
   this.coinImg_url = data.coin.img_url;
