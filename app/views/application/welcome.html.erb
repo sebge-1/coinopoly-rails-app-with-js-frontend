@@ -1,7 +1,4 @@
-
-<%= javascript_include_tag 'particles.min', 'application'%>
-
-<script>particlesJS.load('particles-js', '<%= asset_path 'particles.json' %>', function() {
+<script>particlesJS.load('particles-js', 'assets/particles.json', function() {
      console.log('callback - particles.js config loaded');
     });</script>
 
@@ -11,13 +8,13 @@
       <div>
         <h1>Sign Up</h1>
 
-        <%= form_for @sign_up_user do |f| %>
+        <%= form_for @sign_up_user,  html: { id: :sign_up_user} do |f| %>
           <label>Name:</label><br>
-          <%= f.text_field :name, placeholder: @sign_up_user.errors.full_messages_for(:name).first %><br>
+          <%= f.text_field :name, id: :sign_up_user_name, placeholder: @sign_up_user.errors.full_messages_for(:name).first %><br>
           <label>Email:</label><br>
           <%= f.email_field :email, placeholder: @sign_up_user.errors.full_messages_for(:email).first %><br>
           <label>Password</label><br>
-          <%= f.password_field :password, placeholder: @sign_up_user.errors.full_messages_for(:password).first %><br>
+          <%= f.password_field :password, id: :sign_up_user_password, placeholder: @sign_up_user.errors.full_messages_for(:password).first %><br>
           <%= f.submit 'Signup' %>
         <% end %>
       </div>
