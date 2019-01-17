@@ -20,15 +20,15 @@ class SessionsController < ApplicationController
     @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
       u.email = auth['info']['email']
+      u.password = SecureRandom.urlsafe_base64 unless u.password != nil
     end
-
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to user_path(@user.id)
     else
       flash[:error] = "Something went wrong. Try again."
       @sign_up_user = User.new
-      @sign_in_user = User.create(user_params)
+      @sign_in_user = User.new
       render :welcome
     end
   end
