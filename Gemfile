@@ -43,6 +43,9 @@ gem 'rails_12factor'
 # gem 'mini_magick', '~> 4.8'
 # gem 'capistrano-rails', group: :development
 
+# install rack middleware to handle cors issues
+gem 'rack-cors', require: 'rack/cors'
+
 # pagination
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap4', '~> 0.2.2'
