@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: 'application#welcome'
-
+  
   get '/logout',  to: 'sessions#destroy'
   get '/auth/facebook/callback' => 'sessions#create_from_facebook'
   get 'users/:id/follower_feed' => 'activities#follower_feed'
   get 'activities/index'
 
   post '/signin', to: 'sessions#create'
-  
+
   resources :coins
   resources :relationships, only: [:create, :destroy]
 

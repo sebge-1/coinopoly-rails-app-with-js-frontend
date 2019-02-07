@@ -1,0 +1,13 @@
+{:uriI"¢file://app/assets/javascripts/templates/portfolio_template.hbs?type=text/x-handlebars-template&id=1ea9945eed193999187f5c5861960dc94669151efe32142c5b19c43a5765b03c:ET:load_pathI"app/assets/javascripts;T:filenameI"<app/assets/javascripts/templates/portfolio_template.hbs;T:	nameI"!templates/portfolio_template;T:logical_pathI"*templates/portfolio_template.hamlbars;T:content_typeI"text/x-handlebars-template;T:sourceI"Ï<div class="card">
+  <div class="card-header">
+    <h4><a href="/users/{{userID}}/portfolios/{{id}}">{{name}}</a></h4>
+  </div>
+  <div class="card-body">
+    <p>Current value: ${{value}}</p>
+  </div>
+</div>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Tprocessors:type=text/x-handlebars-template&file_type=text/x-handlebars-template;TTI"Jfile-digest://app/assets/javascripts/templates/portfolio_template.hbs;TTF:charsetI"
+utf-8;F:digest"%ùxMz#yñ3ÊË¡Ÿ¹/€×¼ü(Þ%÷Î‰Â%€:lengthiÏ:dependencies_digest"%k‘ÀÉÍ.™Ô^+_ùç¹~\—)å´µ’»‹âoÂÀÁ…:idI"E1ea9945eed193999187f5c5861960dc94669151efe32142c5b19c43a5765b03c;F:
+mtimel+tû5\

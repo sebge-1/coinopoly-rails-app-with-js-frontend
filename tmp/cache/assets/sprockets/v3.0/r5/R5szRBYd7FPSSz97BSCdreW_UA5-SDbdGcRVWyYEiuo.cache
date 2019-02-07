@@ -1,0 +1,28 @@
+{:uriI"œfile://app/assets/javascripts/templates/new_position.hbs?type=text/x-handlebars-template&id=b0bc29bba92a17f01a9a4fe668a6893c464b44d58447fd6fe4f1d921a7b6a98d:ET:load_pathI"app/assets/javascripts;T:filenameI"6app/assets/javascripts/templates/new_position.hbs;T:	nameI"templates/new_position;T:logical_pathI"$templates/new_position.hamlbars;T:content_typeI"text/x-handlebars-template;T:sourceI"d<div class="card" data-id={{id}}>
+  <div class="card-header">
+    <h1 class="card-title">{{coinName}}</h1>
+  </div>
+  <div class="card-body">
+    <p>Quantity: {{quantity}}</p>
+    <p>Value: ${{value}}</p>
+    <div class="text-right">
+      <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
+        <img src="/assets/icons8-edit-32.png", height="15" width="15" href="#">
+      </a>
+      <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" accept-charset="UTF-8" method="post">
+        <input name="utf8" type="hidden" value="âœ“">
+        <input type="hidden" name="_method" value="delete">
+        <input type="image" src="/assets/icons8-trash-32.png" height="15" width="15">
+        <input type="submit" value="" style="display: none;">
+      </form>
+    </div>
+  </div>
+  <div class="card-footer">
+    <img src={{coinImg_url}}>
+  </div>
+</div>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Tprocessors:type=text/x-handlebars-template&file_type=text/x-handlebars-template;TTI"Dfile-digest://app/assets/javascripts/templates/new_position.hbs;TTF:charsetI"
+utf-8;F:digest"%žÁÐY¿Û¨?á9r]–YÍÙ9˜r©ŽØp8Ñ¹Ã=z:lengthid:dependencies_digest"%;X3õùÇ dž¹¢€Ö/¿@ûï[]‰6¯"‘>oñ:idI"Eb0bc29bba92a17f01a9a4fe668a6893c464b44d58447fd6fe4f1d921a7b6a98d;F:
+mtimel+UÅ6\

@@ -1,0 +1,76 @@
+{:uriI"Üfile://app/assets/javascripts/particles.json?type=application/json&id=f30899710894482a454c98bd98c88d7c5d3a9f0b8c83deea75021857dd26229e:ET:load_pathI"app/assets/javascripts;T:filenameI"*app/assets/javascripts/particles.json;T:	nameI"particles;T:logical_pathI"particles.json;T:content_typeI"application/json;T:sourceI"w{
+  "particles":{
+    "number":{
+      "value":200
+    },
+    "color":{
+      "value":"#fff"
+    },
+    "shape":{
+      "type":"circle",
+      "stroke":{
+        "width":1,
+        "color":"#ccc"
+      },
+      "image":{
+        "src":"http://www.iconsdb.com/icons/preview/white/contacts-xxl.png"
+      }
+    },
+    "opacity":{
+      "value":0.5,
+      "random":true,
+      "anim":{
+        "enable":false,
+        "speed":1
+      }
+    },
+    "size":{
+      "value": 5,
+      "random":false,
+      "anim":{
+        "enable": false,
+        "speed":30
+      }
+    },
+    "line_linked":{
+      "enable": true,
+      "distance": 120,
+      "color":"#fff",
+      "width":1
+    },
+    "move":{
+      "enable":true,
+      "speed":2,
+      "direction":"none",
+      "straight":false
+    }
+  },
+  "interactivity":{
+    "events":{
+      "onhover":{
+        "enable":true,
+        "mode":"repulse"
+      },
+      "onclick":{
+        "enable": true,
+        "mode":"push"
+      }
+    },
+    "modes":{
+      "repulse":{
+        "distance":50,
+        "duration":0.4
+      },
+      "bubble":{
+        "distance":100,
+        "size":10
+      }
+    }
+  }
+}
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"@processors:type=application/json&file_type=application/json;TTI"8file-digest://app/assets/javascripts/particles.json;TTF:charsetI"
+utf-8;F:digest"%
+´{G≈Ãèº©R‹‹ßT$24∞ˇ‚˚óüîßÊ’w:lengthiw:dependencies_digest"%ß~¡™££•;z&w‰B2µUG¢%k∫Îf?∞G:idI"Ef30899710894482a454c98bd98c88d7c5d3a9f0b8c83deea75021857dd26229e;F:
+mtimel+£6\

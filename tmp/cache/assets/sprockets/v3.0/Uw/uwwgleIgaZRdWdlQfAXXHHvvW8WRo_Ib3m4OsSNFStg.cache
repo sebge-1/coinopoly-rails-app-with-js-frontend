@@ -1,0 +1,46 @@
+{:uriI"œfile://app/assets/javascripts/templates/new_position.hbs?type=text/x-handlebars-template&id=3df7e5ce8cd88fbabf75d30d08936294672b412c0424c2412d63868f7bc1965d:ET:load_pathI"app/assets/javascripts;T:filenameI"6app/assets/javascripts/templates/new_position.hbs;T:	nameI"templates/new_position;T:logical_pathI"$templates/new_position.hamlbars;T:content_typeI"text/x-handlebars-template;T:sourceI"â<div class="card" data-id={{id}}>
+  <div class="card-header">
+    <h1 class="card-title">{{coinName}}</h1>
+  </div>
+  <div class="card-body">
+    <p>Quantity: {{quantity}}</p>
+    <p>Value: ${{value}}</p>
+    <div class="text-right">
+      <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
+        <img src="/assets/icons8-edit-32.png", height="15" width="15" href="#">
+      </a>
+      <form onsubmit="handleSubmit();" data-portfolio-id={{portfolio_id}} data-position-id={{id}} id="delete_position" action="/portfolios/{{portfolio_id}}/positions/{{id}}"  data-position-id={{id}} accept-charset="UTF-8" method="post">
+        <input name="utf8" type="hidden" value="âœ“">
+        <input type="hidden" name="_method" value="delete">
+        <input type="image" src="/assets/icons8-trash-32.png" height="15" width="15">
+        <input type="submit" value="" style="display: none;">
+      </form>
+    </div>
+  </div>
+  <div class="card-footer">
+    <img src={{coinImg_url}}>
+  </div>
+</div>
+
+
+
+<script>
+  function handleSubmit(event) {
+     var positionId = parseInt($(this).attr("data-position-id"));
+     var portfolioId = parseInt($(this).attr("data-portfolio-id"));
+     console.log("I fired")
+      $.ajax({
+        type: "post",
+          url: '/portfolios/' + portfolioId + '/positions/' + positionId,
+          data: {"_method":"delete"},
+          success: function() {
+            $("div").find(`[data-id='${positionId}']`).remove();
+          }
+       });return false;
+     }
+</script>
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Tprocessors:type=text/x-handlebars-template&file_type=text/x-handlebars-template;TTI"Dfile-digest://app/assets/javascripts/templates/new_position.hbs;TTF:charsetI"
+utf-8;F:digest"%bôh(£ö%(dOñ”üöñ”ø(¬,`©¢N¶ài:lengthiâ:dependencies_digest"%P¹u‹ö¾³ƒHFîÉ;†Hòõ†ó³è.Šå¶åE—Rü:idI"E3df7e5ce8cd88fbabf75d30d08936294672b412c0424c2412d63868f7bc1965d;F:
+mtimel+äÂ6\

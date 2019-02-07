@@ -1,0 +1,47 @@
+{:uriI"œfile://app/assets/javascripts/templates/new_position.hbs?type=text/x-handlebars-template&id=6fda6356756297ea33c343ef943bddb1b06cbc7c93c8fdfff3ef1692d8e4a169:ET:load_pathI"app/assets/javascripts;T:filenameI"6app/assets/javascripts/templates/new_position.hbs;T:	nameI"templates/new_position;T:logical_pathI"$templates/new_position.hamlbars;T:content_typeI"text/x-handlebars-template;T:sourceI"<div class="card" data-id={{id}}>
+  <div class="card-header">
+    <h1 class="card-title">{{coinName}}</h1>
+  </div>
+  <div class="card-body">
+    <p>Quantity: {{quantity}}</p>
+    <p>Value: ${{value}}</p>
+    <div class="text-right">
+      <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
+        <img src="/assets/icons8-edit-32.png", height="15" width="15" href="#">
+      </a>
+      <form data-portfolio-id={{portfolio_id}} data-position-id={{id}} id="delete_position" action="/portfolios/{{portfolio_id}}/positions/{{id}}"  data-position-id={{id}} accept-charset="UTF-8" method="post">
+        <input name="utf8" type="hidden" value="âœ“">
+        <input type="hidden" name="_method" value="delete">
+        <input type="image" src="/assets/icons8-trash-32.png" height="15" width="15">
+        <input type="submit" name="commit" value="" style="display: none;" data-disable-with>
+      </form>
+    </div>
+  </div>
+  <div class="card-footer">
+    <img src={{coinImg_url}}>
+  </div>
+</div>
+
+<!--
+<script>
+  $(function () {
+     $('form#delete_position').on('submit', function(event) {
+       var positionId = parseInt($(this).attr("data-position-id"));
+       var portfolioId = parseInt($(this).attr("data-portfolio-id"));
+      $.ajax({
+        type: "post",
+          url: '/portfolios/' + portfolioId + '/positions/' + positionId,
+          data: {"_method":"delete"},
+          success: function() {
+            $("div").find(`[data-id='${positionId}']`).remove();
+          }
+       });return false;
+     })
+   })
+</script> -->
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"Tprocessors:type=text/x-handlebars-template&file_type=text/x-handlebars-template;TTI"Dfile-digest://app/assets/javascripts/templates/new_position.hbs;TTF:charsetI"
+utf-8;F:digest"%¯_íù>
+(@W$³ê.¿ºÊøÁSŽŒF,¶:lengthi:dependencies_digest"%<ýâãäýž0¿³Ñ1×ë¡G°é¡I$ôs<”éïíü:idI"E6fda6356756297ea33c343ef943bddb1b06cbc7c93c8fdfff3ef1692d8e4a169;F:
+mtimel+R»6\

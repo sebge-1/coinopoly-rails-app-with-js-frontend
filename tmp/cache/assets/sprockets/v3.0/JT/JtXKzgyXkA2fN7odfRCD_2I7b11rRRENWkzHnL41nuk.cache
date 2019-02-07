@@ -1,0 +1,75 @@
+{:uriI"Üfile://app/assets/javascripts/particles.json?type=application/json&id=1ec609036ad252c2ddc725f2e40d2be6e9cf5c9f18bc50761d583ba61c16b329:ET:load_pathI"app/assets/javascripts;T:filenameI"*app/assets/javascripts/particles.json;T:	nameI"particles;T:logical_pathI"particles.json;T:content_typeI"application/json;T:sourceI"v{
+  "particles":{
+    "number":{
+      "value":200
+    },
+    "color":{
+      "value":"#fff"
+    },
+    "shape":{
+      "type":"circle",
+      "stroke":{
+        "width":1,
+        "color":"#ccc"
+      },
+      "image":{
+        "src":"http://www.iconsdb.com/icons/preview/white/contacts-xxl.png"
+      }
+    },
+    "opacity":{
+      "value":0.2,
+      "random":true,
+      "anim":{
+        "enable":false,
+        "speed":1
+      }
+    },
+    "size":{
+      "value": 5,
+      "random":false,
+      "anim":{
+        "enable": true,
+        "speed":20
+      }
+    },
+    "line_linked":{
+      "enable": true,
+      "distance": 160,
+      "color":"#fff",
+      "width":3
+    },
+    "move":{
+      "enable":true,
+      "speed":2,
+      "direction":"none",
+      "straight":false
+    }
+  },
+  "interactivity":{
+    "events":{
+      "onhover":{
+        "enable":true,
+        "mode":"repulse"
+      },
+      "onclick":{
+        "enable": true,
+        "mode":"push"
+      }
+    },
+    "modes":{
+      "repulse":{
+        "distance":50,
+        "duration":0.4
+      },
+      "bubble":{
+        "distance":100,
+        "size":10
+      }
+    }
+  }
+}
+;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"@processors:type=application/json&file_type=application/json;TTI"8file-digest://app/assets/javascripts/particles.json;TTF:charsetI"
+utf-8;F:digest"%Ç‡Còçf9cK„AV˝5(ñZô)Óåæ—ÄèT:lengthiv:dependencies_digest"%O∂»+6fΩk;òloâDÉrÏÇÓ∑‹ˆ‹FA˚Â:idI"E1ec609036ad252c2ddc725f2e40d2be6e9cf5c9f18bc50761d583ba61c16b329;F:
+mtimel+06\
