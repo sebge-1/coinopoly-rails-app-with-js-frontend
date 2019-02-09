@@ -18,3 +18,30 @@ div#info-secondary > img {
   height: 50px;
   margin-right: 20px;
 }
+
+div.background-container {
+  background: url('/assets/10540.jpg') no-repeat center center fixed;;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  color: black;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+div.form-container {
+  width: 250px;
+  margin: 0 auto;
+  padding-top: 15px;
+  font-size: 18px;
+  background-color:rgba(255,255,255,0.8);
+  border-radius: 5px;
+  padding: 50px 10px 50px 10px;
+}
+
+div.form-group {
+  width: 33%;
+  margin: 0 auto;
+}

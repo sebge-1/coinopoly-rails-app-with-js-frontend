@@ -1,7 +1,11 @@
-<%= form_for [user, portfolio] do |f| %>
-  <label>Name:</label><br>
-  <%= f.text_field :name, placeholder: @portfolio.errors.full_messages_for(:name).first %><br>
-  <label>Make private?</label><br>
-  <%= f.check_box :public, {}, checked_value = false, unchecked_value = true %><br>
-  <%= f.submit portfolio_form_action %>
-<% end %>
+<div class="text-center pt-5 background-container">
+  <div class="form-container">
+    <%= form_for [user, portfolio] do |f| %>
+      <label>Name:</label><br>
+      <%= f.text_field :name, placeholder: @portfolio.errors.full_messages_for(:name).first %><br>
+      <label class="mt-2">Make private?</label><br>
+      <%= f.check_box :public, {}, checked_value = false, unchecked_value = true %><br>
+      <%= f.submit portfolio_form_action, class: "btn btn-sm btn-dark mt-3" %>
+    <% end %>
+  </div>
+</div>
