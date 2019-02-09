@@ -2,7 +2,7 @@
   <h1 class="display-4">Welcome to Coinopoly, <%= user.name %></h1>
   <p class="lead">A lot has been going on since you last logged in.</p>
   <p class="lead">
-    <a href="../activities/index" class="btn btn-lg btn-secondary">Learn more</a>
+    <a href="../activities/index" class="btn btn-sm btn-secondary">Learn more</a>
   </p>
 
   <div class="row">
@@ -22,16 +22,23 @@
 </div>
 
 <div class="container">
-  <div class ="text-center">
+  <div class="text-center">
     <% if @portfolios.blank? %>
-      <%= link_to 'Create your first portfolio', new_user_portfolio_path(user) %>
+      <%= link_to 'Create your first portfolio', new_user_portfolio_path(user), class: "btn btn-lg btn-secondary" %>
     <% else %>
-      <a href="#" id="show-more" class="btn btn-secondary">Show portfolios</a>
-      <a href="#" id="by-value" class="btn btn-secondary">Show by value</a>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="show-more">Show portfolios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="by-value">Show by value</a>
+        </li>
+      </ul>
+
       <div class ="card-group">
       </div>
       <div id="add" class="mt-5">
-        <h4><%= link_to 'Add another portfolio', new_user_portfolio_path(user), class: "bt btn-lg btn-secondary" %> </h4>
+        <h4><%= link_to 'Add another portfolio', new_user_portfolio_path(user), class: "btn btn-sm btn-secondary" %> </h4>
       </div>
     <% end %>
     </div>
