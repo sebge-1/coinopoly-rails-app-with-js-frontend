@@ -1,12 +1,17 @@
 <% if @activities.nil? %>
-<div class="alert alert-warning" role="alert">
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <h4>Your feed looks a little empty. Click <%= link_to 'here', users_path %> to follow more people.<h4>
-</div>
+  <div class="alert alert-warning" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4>Your feed looks a little empty. Click <%= link_to 'here', users_path %> to follow more people.<h4>
+  </div>
 
-<% else %>
-  <%= render partial: 'public_activity/activities/activity', collection: @activities %>
-  <%= will_paginate @activities, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, previous_label: "Newer", next_label: "Older", inner_window: 1, outer_window: 1 %>
+  <% else %>
+  <div class="text-center mt-3">
+    <h1>See what has been going on in your network</h1>
+  </div>
+  <div class="ml-3">
+    <%= render partial: 'public_activity/activities/activity', collection: @activities %>
+    <%= will_paginate @activities, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, previous_label: "Newer", next_label: "Older", inner_window: 1, outer_window: 1 %>
+  </div>
 <% end %>

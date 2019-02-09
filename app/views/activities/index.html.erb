@@ -1,4 +1,7 @@
-<h1>See what has been happening on Coinopoly: </h1>
-
-<%= render @activities %>
-<%= will_paginate @activities, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, previous_label: "Newer", next_label: "Older", inner_window: 1, outer_window: 1 %>
+<div class="text-center mt-3">
+  <h1>See what has been happening on Coinopoly </h1>
+</div>
+<div class="ml-3">
+  <%= render @activities %>
+  <%= will_paginate @activities, renderer: WillPaginate::ActionView::BootstrapLinkRenderer, previous_label: "Newer", next_label: "Older", inner_window: 1, outer_window: 1 %>
+</div>
