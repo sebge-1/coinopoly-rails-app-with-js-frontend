@@ -20,7 +20,7 @@
 <% if current_user == @user %>
   <div class="text-center">
     <%= form_for [@portfolio, @position], html: {"data-id"=> @portfolio.id} do |f| %>
-      <div class="form-group">
+      <div class="form-group mt-4">
         <label for="coin">Coin:</label>
         <%= f.collection_select :coin_id, Coin.all, :id, :name, {}, {:class=>"form-control"} %><br>
       </div>
@@ -28,20 +28,20 @@
         <label for="quantity">Quantity:</label><br>
         <%= f.number_field :quantity, placeholder: @position.errors.full_messages_for(:quantity).first, step: :any, class:"form-control" %><br>
       </div>
-      <%= f.submit position_form_action, class: "btn btn-lg btn-secondary" %>
+      <%= f.submit position_form_action, class: "btn btn-sm btn-secondary mb-3" %>
     <% end %>
   </div>
 <% end %>
 
 <div id="back-button" data-id="<%=@portfolio.id%>">
   <% if @user.portfolios.map{|portfolio| portfolio.id}.include?(@portfolio.id - 1) %>
-    <a href="#" class="js-back float-left btn btn-secondary">Previous Portfolio</a>
+    <a href="#" class="js-back float-left btn btn-secondary">&#8249;</a>
   <% end %>
 </div>
 
 <div id="next-button" data-id="<%=@portfolio.id%>">
   <% if @user.portfolios.map{|portfolio| portfolio.id}.include?(@portfolio.id + 1) %>
-    <a href="#" class="js-next float-right btn btn-secondary">Next Portfolio</a>
+    <a href="#" class="js-next float-right btn btn-secondary">&#8250;</a>
   <% end %>
 </div>
 <!-- set content of button elements depending on data id: none if id-1 or id +1 exceeds user's range -->
@@ -52,13 +52,13 @@
       var nextID = parseInt($("#next-button").attr("data-id")) + 1;
       var backID = parseInt($("#back-button").attr("data-id")) - 1;
       if (ids.includes(nextID)) {
-        $("#next-button").html("<a href='#' class='js-next float-right btn btn-secondary'>Next portfolio</a>")
+        $("#next-button").html("<a href='#' class='js-next float-right btn btn-secondary'>&#8250;</a>")
       }
       else {
           $("#next-button").html("")
       }
       if (ids.includes(backID)) {
-        $("#back-button").html("<a href='#' class='js-back float-left btn btn-secondary'>Previous Portfolio</a>")
+        $("#back-button").html("<a href='#' class='js-back float-left btn btn-secondary'>	&#8249;</a>")
       }
       else {
         $("#back-button").html("")
