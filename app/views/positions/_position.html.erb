@@ -7,7 +7,9 @@
     <p>Value: $<%= position.value %></p>
     <div class="text-right">
       <% if current_user == @user %>
-        <%= link_to image_tag("/assets/icons8-edit-32.png", height: "15", width: "15"), edit_portfolio_position_path(position.portfolio, position) %>
+        <%= link_to edit_portfolio_position_path(position.portfolio, position) do %>
+          <%= image_tag("icons8-edit-32.png", height:"15", width:"15") %>
+        <% end %>
         <%= render partial: 'positions/delete', locals: {portfolio: position.portfolio, position: position} %>
       <% end %>
     </div>
