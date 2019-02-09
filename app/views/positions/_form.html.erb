@@ -1,5 +1,5 @@
 <%= form_for [portfolio, position] do |f| %>
-  <div class="form-group">
+  <div class="form-group mt-3">
     <label for="coin">Coin:</label>
     <%= f.collection_select :coin_id, coins, :id, :name, {}, {:class=>"form-control"} %><br>
   </div>
@@ -8,5 +8,5 @@
     <%= f.number_field :quantity, placeholder: @position.errors.full_messages_for(:quantity).first, step: :any, class:"form-control" %><br>
   </div>
    <% f.hidden_field :portfolio_id, value: portfolio.id %>
-  <%= f.submit position_form_action, class: "btn btn-lg btn-secondary" %>
+  <%= f.submit position_form_action, class: "btn btn-sm btn-secondary" %>
 <% end %>
