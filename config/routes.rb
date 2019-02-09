@@ -2,9 +2,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root to: 'application#welcome'
-  
+
   get '/logout',  to: 'sessions#destroy'
-  get '/auth/facebook/callback' => 'sessions#create_from_facebook'
   get 'users/:id/follower_feed' => 'activities#follower_feed'
   get 'activities/index'
 
@@ -23,7 +22,4 @@ Rails.application.routes.draw do
   resources :portfolios do
     resources :positions
   end
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
