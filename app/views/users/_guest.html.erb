@@ -28,7 +28,15 @@
     <% if user.portfolios.blank? %>
       <h4>This user does not have any viewable portfolios</h4>
     <% else %>
-      <a href="#" id="show-more" class="float-left btn btn-secondary" data-id="<%=@user.id%>">Show portfolios</a>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="show-more">Show portfolios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="by-value">Show by value</a>
+        </li>
+      </ul>
+
       <div class="card-group row">
       </div>
     <% end %>
