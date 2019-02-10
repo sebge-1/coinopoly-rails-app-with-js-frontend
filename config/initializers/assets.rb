@@ -16,4 +16,5 @@ Rails.application.config.assets.precompile += %w(particles.min.js)
 Rails.application.config.assets.precompile += %w(application.js)
 Rails.application.config.assets.precompile += %w( portfolios.js )
 Rails.application.config.assets.precompile += %w( positions.js )
-Rails.application.config.assets.precompile = ['*.css.erb']
+Rails.application.config.assets.precompile += %w( particles.json )
+Rails.application.config.assets.precompile += %w( 10540.jpg )
