@@ -24,4 +24,18 @@
     </div>
 
   </div>
+<% else %>
+    <div class="card-header">
+      <h1 class="card-title">
+        You're following this user
+      </h1>
+    </div>
+
+    <div class="card-body">
+      <% if public_portfolios?(user) %>
+        <p>You have <%= public_portfolio_number(user) %> viewable portfolios.</p>
+      <% else %>
+        <p>You don't have any public portfolios.</p>
+      <% end %>
+    </div>
 <% end %>
