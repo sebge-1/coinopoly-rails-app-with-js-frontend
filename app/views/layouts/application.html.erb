@@ -62,13 +62,12 @@
 
   <!-- display flash messages to the user in case validations fail -->
       <% flash.keys.each do |type| %>
-        <div class="alert
+        <div class="alert alert-dismissible fade show
           <% if type == "error" %>
-            alert-danger
+          alert-danger
           <% else %>
-            alert-success
-          <% end %>
-            alert-dismissible fade show" role="alert">
+          alert-success
+          <% end %>" role="alert">
           <%= flash[type] %>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>

@@ -1,0 +1,25 @@
+{{#positions}}
+<div class="card" data-id={{id}}>
+  <div class="card-header">
+    <h1 class="card-title">{{coin.name}}</h1>
+  </div>
+  <div class="card-body">
+    <p>Quantity: {{quantity}}</p>
+    <p>Value: $ {{value}} </p>
+      <div class="text-right">
+        <a href="/portfolios/{{portfolio_id}}/positions/{{id}}/edit">
+          <img src="/assets/icons8-edit-32-6e0ab80ec8252160ee5e89b57a3dfea1b6a8a7b2c5166defaa40a8eb0569aff7.png", height="15" width="15" href="#">
+        </a>
+        <form action="/portfolios/{{portfolio_id}}/positions/{{id}}" accept-charset="UTF-8" method="post">
+          <input name="utf8" type="hidden" value="✓">
+          <input type="hidden" name="_method" value="delete">
+          <input type="image" src="/assets/icons8-trash-32.png" height="15" width="15">
+          <input type="submit" name="commit" value="" style="display: none;">
+        </form>
+      </div>
+    </div>
+  <div class="card-footer">
+    <img src={{coin.img_url}}>
+  </div>
+</div>
+{{/positions}}
