@@ -1,13 +1,15 @@
 {{#positions}}
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title">{{coin.name}}</h1>
-  </div>
-  <div class="card-body">
-    <p>Quantity: {{quantity}}</p>
-    <p>Value: $ {{value}} </p>
-  <div class="card-footer">
-    <img src={{coin.img_url}}>
+<div class="col-sm-6">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title">{{coin.name}}</h1>
+    </div>
+    <div class="card-body">
+      <p>Quantity: {{quantity}}</p>
+      <p>Value: $ {{value}} </p>
+    <div class="card-footer">
+      <img src={{coin.img_url}}>
+    </div>
   </div>
 </div>
 {{/positions}}
