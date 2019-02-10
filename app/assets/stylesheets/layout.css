@@ -20,11 +20,6 @@ div#info-secondary > img {
 }
 
 div.background-container {
-  background: url('/assets/10540.jpg') no-repeat center center fixed;;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
   height: 100vh;
   color: black;
   font-size: 18px;

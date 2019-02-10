@@ -1,4 +1,8 @@
-<div class="text-center pt-5 background-container">
+<div class="text-center pt-5 background-container" style="background: url('<%= image_path('10540.jpg') %>') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;">
   <div class="form-container">
     <%= form_for [user, portfolio] do |f| %>
       <label>Name:</label><br>
