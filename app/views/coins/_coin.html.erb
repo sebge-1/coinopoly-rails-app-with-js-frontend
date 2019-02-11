@@ -1,13 +1,15 @@
-<div class="card">
-  <div class="card-header">
-    <h1 class="card-title"><%= link_to coin.name, coin_path(coin) %></h1>
-  </div>
-  <div class="card-body">
-    <p><%= coin.number_of_users %> people hold this coin in their portfolios </p>
-    <p class="card-text">Current price: $<%= coin.value %></p>
-  </div>
-  <div class="card-footer">
-    <p>Ticker: <%= coin.ticker %></p>
-    <img src= <%= coin.img_url %> >
+<div class="col-sm-6">
+  <div class="card">
+    <div class="card-header">
+      <h1 class="card-title"><%= link_to coin.name, coin_path(coin) %></h1>
+    </div>
+    <div class="card-body">
+      <p><%= coin.number_of_users %> people hold this coin in their portfolios </p>
+      <p class="card-text">Current price: $<%= coin.value %></p>
+    </div>
+    <div class="card-footer">
+      <p>Ticker: <%= coin.ticker %></p>
+      <img src= <%= coin.img_url %> >
+    </div>
   </div>
 </div>
