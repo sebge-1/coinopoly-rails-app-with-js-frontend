@@ -22,20 +22,22 @@
         <%= render partial: "follow", locals: {user: user} %><br>
       <% end %>
     </div>
-
   </div>
-<% else %>
+  <% else %>
+  <div class="card">
+
     <div class="card-header">
       <h1 class="card-title">
-        You're following this user
+        This is <%= link_to 'you', user_path(user) %>
       </h1>
     </div>
 
     <div class="card-body">
       <% if public_portfolios?(user) %>
-        <p>You have <%= public_portfolio_number(user) %> viewable portfolios.</p>
+        <p>You have <%= public_portfolio_number(user) %> public portfolios.</p>
       <% else %>
-        <p>You don't have any public portfolios.</p>
+        <p>You don't have any viewable portfolios.</p>
       <% end %>
     </div>
+  </div>
 <% end %>
