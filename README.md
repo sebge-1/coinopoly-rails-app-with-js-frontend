@@ -26,7 +26,7 @@ If you are looking to help to with a code contribution, our project uses Rails a
 - Celebrate your success after your pull request is merged!
 
 ## Where can I go for help?
-If you need help, you can direct question to sebgertz@gmail.com
+If you need help, you can open an issue on this repo.
 
 # Licensing Statement
 This project has been licensed under the MIT open source license.
